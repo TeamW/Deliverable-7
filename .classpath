@@ -3,6 +3,9 @@
 	<classpathentry kind="src" path="internSrc/clui/src"/>
 	<classpathentry kind="src" path="internSrc/system/src"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+<<<<<<< HEAD
 	<classpathentry kind="con" path="org.eclipse.jdt.junit.JUNIT_CONTAINER/4"/>
+=======
+>>>>>>> Upload minor changes
 	<classpathentry kind="output" path="bin"/>
 </classpath>
