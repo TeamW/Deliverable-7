@@ -13,7 +13,7 @@ import uk.ac.glasgow.internman.UoGGrade;
  */
 public interface AdminInterface {
 	
-	void publishAdvertisement(int advertisementIndex, String comment);
+void publishAdvertisement(int advertisementIndex, String comment);
 	
 	boolean registerNewEmployer(String name, String email);
 	
