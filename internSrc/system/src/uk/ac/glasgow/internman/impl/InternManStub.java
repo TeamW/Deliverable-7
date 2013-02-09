@@ -26,7 +26,7 @@ public class InternManStub implements InternMan {
 	
 	private float timeLoggedIn = 0;
 	private float timeLogOut = 60 * 30; //logout after 30 mins
-	InternManCLUI userInterface;
+	private InternManCLUI userInterface;
 	
 
 	public InternManStub(UserStore users) {
@@ -41,6 +41,7 @@ public class InternManStub implements InternMan {
 		SystemDialogue dialogue = new SystemDialogue(System.in, System.out, System.err);
 
 		InternManCLUI userInterface = new InternManCLUI(facade,dialogue);
+		userInterface.run();
 	}
 
 	@Override
