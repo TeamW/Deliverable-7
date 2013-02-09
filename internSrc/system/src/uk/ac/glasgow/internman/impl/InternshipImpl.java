@@ -7,50 +7,62 @@ import uk.ac.glasgow.internman.Visit;
 
 public class InternshipImpl implements Internship {
 
+	private String manager;
+	private String managerEmail;
+	private boolean visitComplete;
+	private Employer employer;
+	private Role role;
+	private InternshipStatus status;
+	private Visit visit;
+
 	public InternshipImpl() {
-		// TODO Auto-generated constructor stub
+
+	}
+
+	public InternshipImpl(String manager, String managerEmail,
+			Employer employer, Role role) {
+		this.manager = manager;
+		this.managerEmail = managerEmail;
+		this.visitComplete = false;
+		this.employer = employer;
+		this.role = role;
+		this.status = InternshipStatus.APPLYING;
+		this.visit = null;
 	}
 
 	@Override
 	public String getManager() {
-		// TODO Auto-generated method stub
-		return null;
+		return manager;
 	}
 
 	@Override
 	public String getManagerEmail() {
-		// TODO Auto-generated method stub
-		return null;
+		return managerEmail;
 	}
 
 	@Override
 	public boolean isVisitComplete() {
-		// TODO Auto-generated method stub
-		return false;
+		return visitComplete;
 	}
 
 	@Override
 	public Employer getEmployer() {
-		// TODO Auto-generated method stub
-		return null;
+		return employer;
 	}
 
 	@Override
 	public Role getRole() {
-		// TODO Auto-generated method stub
-		return null;
+		return role;
 	}
 
 	@Override
 	public InternshipStatus getStatus() {
-		// TODO Auto-generated method stub
-		return null;
+		return status;
 	}
 
 	@Override
 	public Visit getVisit() {
-		// TODO Auto-generated method stub
-		return null;
+		return visit;
 	}
 
 }
