@@ -6,7 +6,7 @@ import uk.ac.glasgow.internman.Role;
 
 public class RoleImpl implements Role {
 
-	public RoleImpl() {
+	public RoleImpl(String title, String location, Date start, Date end, String description, Double salary) {
 		// TODO Auto-generated constructor stub
 	}
 

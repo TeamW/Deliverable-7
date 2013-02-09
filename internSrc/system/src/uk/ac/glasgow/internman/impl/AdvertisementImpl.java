@@ -1,7 +1,6 @@
 package uk.ac.glasgow.internman.impl;
 
-import java.util.Date;
-import java.util.Map;
+import java.util.*;
 
 import uk.ac.glasgow.internman.Advertisement;
 import uk.ac.glasgow.internman.Employer;
@@ -9,45 +8,56 @@ import uk.ac.glasgow.internman.Role;
 
 public class AdvertisementImpl implements Advertisement {
 
-	public AdvertisementImpl() {
-		// TODO Auto-generated constructor stub
+	private String title;
+	private String location;
+	private String comments;
+	private Employer employer;
+	private Map<Integer, Role> roles;
+	private int numberOfRoles;
+
+	public AdvertisementImpl(String title, String location, Employer employer) {
+		this.title = title;
+		this.location = location;
+		this.employer = employer;
+		roles = new HashMap<Integer, Role>();
+		numberOfRoles = 0;
 	}
 
 	@Override
 	public Map<Integer, Role> getRoles() {
-		// TODO Auto-generated method stub
-		return null;
+		return roles;
 	}
 
 	@Override
 	public Employer getEmployer() {
-		// TODO Auto-generated method stub
-		return null;
+		return employer;
 	}
 
 	@Override
 	public String getApplicationDetails() {
-		// TODO Auto-generated method stub
-		return null;
+		return "Title: " + title + "\n" + "Location: " + location + "\n"
+				+ "Employer: " + employer.getName();
 	}
 
 	@Override
 	public String getComments() {
-		// TODO Auto-generated method stub
-		return null;
+		return comments;
 	}
 
 	@Override
 	public AdvertisementStatus getStatus() {
-		// TODO Auto-generated method stub
+		/* AdvertisementStatus type? */
 		return null;
 	}
 
 	@Override
 	public Role addNewRole(String title, String location, Date start, Date end,
 			String description, Double salary) {
-		// TODO Auto-generated method stub
-		return null;
+		Role newRole = new RoleImpl(title, location, start, end, description,
+				salary);
+		numberOfRoles++;
+		roles.put(new Integer(numberOfRoles), newRole);
+		return newRole;
 	}
 
 }
