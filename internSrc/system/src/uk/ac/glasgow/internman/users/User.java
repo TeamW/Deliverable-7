@@ -18,7 +18,7 @@ public class User implements Serializable {
 		this.password = password;
 	}
 	
-	protected boolean authenticate (String password){
+	public boolean authenticate (String password){
 		return this.password.equals(password);
 	}
 }

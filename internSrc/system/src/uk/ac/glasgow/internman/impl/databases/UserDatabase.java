@@ -30,7 +30,8 @@ public class UserDatabase implements AdminDutiesInterface,
 		if (!databaseLoaded) {
 			databaseLoaded = loadUserDatabase();
 		}
-		return false;
+		User user = users.get(username);
+		return (user == null) ? false : user.authenticate(password);
 	}
 
 	@Override
