@@ -6,44 +6,53 @@ import uk.ac.glasgow.internman.Role;
 
 public class RoleImpl implements Role {
 
-	public RoleImpl(String title, String location, Date start, Date end, String description, Double salary) {
-		// TODO Auto-generated constructor stub
+	private String title;
+	private String location;
+	private Date start;
+	private Date end;
+	private String description;
+	private Double salary;
+	private boolean approved;
+
+	public RoleImpl(String title, String location, Date start, Date end,
+			String description, Double salary) {
+		this.title = title;
+		this.location = location;
+		this.start = start;
+		this.end = end;
+		this.description = description;
+		this.salary = salary;
+		approved = false;
 	}
 
 	@Override
 	public String getTitle() {
-		// TODO Auto-generated method stub
-		return null;
+		return title;
 	}
 
 	@Override
 	public Date getStart() {
-		// TODO Auto-generated method stub
-		return null;
+		return start;
 	}
 
 	@Override
 	public Date getEnd() {
-		// TODO Auto-generated method stub
-		return null;
+		return end;
 	}
 
 	@Override
 	public Double getSalary() {
-		// TODO Auto-generated method stub
-		return null;
+		return salary;
 	}
 
 	@Override
 	public boolean isApproved() {
-		// TODO Auto-generated method stub
-		return false;
+		return approved;
 	}
 
 	@Override
 	public String getLocation() {
-		// TODO Auto-generated method stub
-		return null;
+		return location;
 	}
 
 }
