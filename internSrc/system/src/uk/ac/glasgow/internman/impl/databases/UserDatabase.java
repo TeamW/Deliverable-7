@@ -57,7 +57,14 @@ public class UserDatabase implements AdminDutiesInterface,
 		if (!employerDatabaseLoaded) {
 			employerDatabaseLoaded = loadEmployerDatabase();
 		}
-		return false;
+		if (employers.get(employerName) != null) {
+			System.out.println("Employer already exists.");
+			return false;
+		}
+		Employer newEmployer = new EmployerImpl(employerName, employerEmail);
+		employers.put(employerName, newEmployer);
+		updateEmployerDatabase();
+		return true;
 	}
 
 	@Override
@@ -65,7 +72,7 @@ public class UserDatabase implements AdminDutiesInterface,
 		if (!employerDatabaseLoaded) {
 			employerDatabaseLoaded = loadEmployerDatabase();
 		}
-		return null;
+		return employers.get(employerName);
 	}
 
 	@Override
@@ -73,7 +80,7 @@ public class UserDatabase implements AdminDutiesInterface,
 		if (!studentDatabaseLoaded) {
 			studentDatabaseLoaded = loadStudentDatabase();
 		}
-		return null;
+		return students.get(guid);
 	}
 
 	@Override
@@ -81,6 +88,14 @@ public class UserDatabase implements AdminDutiesInterface,
 		if (!studentDatabaseLoaded) {
 			studentDatabaseLoaded = loadStudentDatabase();
 		}
+		Student temp = students.get(student.getMatriculation());
+		if (temp == null) {
+			System.out.println("Student didn't exist in database, adding now.");
+			students.put(student.getMatriculation(), student);
+		} else {
+			temp = student;
+		}
+		updateStudentDatabase();
 	}
 
 	@SuppressWarnings("unchecked")
@@ -133,6 +148,33 @@ public class UserDatabase implements AdminDutiesInterface,
 		return true;
 	}
 
+	private boolean updateStudentDatabase() {
+		if (!studentDatabaseLoaded) {
+			return false;
+		}
+		ObjectOutputStream oos = null;
+		try {
+			studentDatabase = new File(studentDatabaseLocation);
+			FileOutputStream fos = new FileOutputStream(studentDatabase);
+			oos = new ObjectOutputStream(fos);
+		} catch (Exception e) {
+			e.printStackTrace();
+			return false;
+		}
+		try {
+			oos.writeObject(students);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		try {
+			oos.close();
+		} catch (Exception e) {
+			e.printStackTrace();
+			return false;
+		}
+		return true;
+	}
+
 	@SuppressWarnings("unchecked")
 	private boolean loadEmployerDatabase() {
 		if (employerDatabaseLoaded) {
@@ -179,6 +221,33 @@ public class UserDatabase implements AdminDutiesInterface,
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
+		}
+		return true;
+	}
+
+	private boolean updateEmployerDatabase() {
+		if (!employerDatabaseLoaded) {
+			return false;
+		}
+		ObjectOutputStream oos = null;
+		try {
+			employerDatabase = new File(employerDatabaseLocation);
+			FileOutputStream fos = new FileOutputStream(employerDatabase);
+			oos = new ObjectOutputStream(fos);
+		} catch (Exception e) {
+			e.printStackTrace();
+			return false;
+		}
+		try {
+			oos.writeObject(employers);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		try {
+			oos.close();
+		} catch (Exception e) {
+			e.printStackTrace();
+			return false;
 		}
 		return true;
 	}
