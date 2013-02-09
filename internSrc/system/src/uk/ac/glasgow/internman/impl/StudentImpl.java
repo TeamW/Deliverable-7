@@ -5,50 +5,58 @@ import uk.ac.glasgow.internman.Student;
 
 public class StudentImpl implements Student {
 
-	public StudentImpl() {
-		// TODO Auto-generated constructor stub
+	private String forename;
+	private String surname;
+	private String email;
+	private String matric;
+	private String password;
+	private Internship internship;
+	private Programme programme;
+
+	public StudentImpl(String forename, String surname, String email,
+			String matric, Programme programme) {
+		this.forename = forename;
+		this.surname = surname;
+		this.email = email;
+		this.matric = matric;
+		this.password = "letmein";
+		this.internship = new InternshipImpl();
+		this.programme = programme;
 	}
 
 	@Override
 	public Internship getInternship() {
-		// TODO Auto-generated method stub
-		return null;
+		return internship;
 	}
 
 	@Override
 	public String getSurname() {
-		// TODO Auto-generated method stub
-		return null;
+		return surname;
 	}
 
 	@Override
 	public String getMatriculation() {
-		// TODO Auto-generated method stub
-		return null;
+		return matric;
 	}
 
 	@Override
 	public String getForename() {
-		// TODO Auto-generated method stub
-		return null;
+		return forename;
 	}
 
 	@Override
 	public String getEmail() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public Programme getProgramme() {
-		// TODO Auto-generated method stub
-		return null;
+		return email;
 	}
 
 	@Override
 	public boolean authenticate(String password) {
-		// TODO Auto-generated method stub
-		return false;
+		return this.password.equals(password);
+	}
+
+	@Override
+	public Programme getProgramme() {
+		return programme;
 	}
 
 }
