@@ -6,4 +6,6 @@ public interface Employer {
 
 	String getEmailAddress();
 
+	boolean authenticate(String password);
+
 }

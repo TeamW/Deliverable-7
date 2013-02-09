@@ -19,4 +19,6 @@ public interface Student {
 	String getEmail();
 
 	Programme getProgramme();
+	
+	boolean authenticate(String password);
 }

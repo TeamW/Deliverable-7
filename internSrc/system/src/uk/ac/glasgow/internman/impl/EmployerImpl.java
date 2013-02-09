@@ -20,4 +20,10 @@ public class EmployerImpl implements Employer {
 		return null;
 	}
 
+	@Override
+	public boolean authenticate(String password) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
 }

@@ -9,92 +9,110 @@ import java.io.ObjectOutputStream;
 import java.util.HashMap;
 
 import uk.ac.glasgow.internman.*;
-import uk.ac.glasgow.internman.users.User;
+import uk.ac.glasgow.internman.impl.*;
 
 public class UserDatabase implements AdminDutiesInterface,
 		AuthenticateInterface {
 
-	private boolean databaseLoaded;
-	private static final String databaseLocation = System
-			.getProperty("user.dir") + "/users.database";
-	private File userDatabase;
-	private HashMap<String, User> users;
+	private boolean studentDatabaseLoaded;
+	private static final String studentDatabaseLocation = System
+			.getProperty("user.dir") + "/student.database";
+	private File studentDatabase;
+	private HashMap<String, Student> students;
+
+	private boolean employerDatabaseLoaded;
+	private static final String employerDatabaseLocation = System
+			.getProperty("user.dir") + "/employer.database";
+	private File employerDatabase;
+	private HashMap<String, Employer> employers;
 
 	public UserDatabase() {
-		databaseLoaded = false;
+		studentDatabaseLoaded = false;
+		employerDatabaseLoaded = false;
+		loadStudentDatabase();
+		loadEmployerDatabase();
 	}
 
 	@Override
-	public boolean login(String username, String password) {
-		if (!databaseLoaded) {
-			databaseLoaded = loadUserDatabase();
+	public boolean loginStudent(String guid, String password) {
+		if (!studentDatabaseLoaded) {
+			studentDatabaseLoaded = loadStudentDatabase();
 		}
-		User user = users.get(username);
-		return (user == null) ? false : user.authenticate(password);
+		Student student = students.get(guid);
+		return (student == null) ? false : student.authenticate(password);
+	}
+
+	@Override
+	public boolean loginEmployer(String name, String password) {
+		if (!employerDatabaseLoaded) {
+			employerDatabaseLoaded = loadEmployerDatabase();
+		}
+		Employer employer = employers.get(name);
+		return (employer == null) ? false : employer.authenticate(password);
 	}
 
 	@Override
 	public boolean addEmployer(String employerName, String employerEmail,
 			String password) {
-		if (!databaseLoaded) {
-			databaseLoaded = loadUserDatabase();
+		if (!employerDatabaseLoaded) {
+			employerDatabaseLoaded = loadEmployerDatabase();
 		}
 		return false;
 	}
 
 	@Override
 	public Employer getEmployer(String employerName) {
-		if (!databaseLoaded) {
-			databaseLoaded = loadUserDatabase();
+		if (!employerDatabaseLoaded) {
+			employerDatabaseLoaded = loadEmployerDatabase();
 		}
 		return null;
 	}
 
 	@Override
 	public Student getStudent(String guid) {
-		if (!databaseLoaded) {
-			databaseLoaded = loadUserDatabase();
+		if (!studentDatabaseLoaded) {
+			studentDatabaseLoaded = loadStudentDatabase();
 		}
 		return null;
 	}
 
 	@Override
 	public void updateStudent(Student student) {
-		if (!databaseLoaded) {
-			databaseLoaded = loadUserDatabase();
+		if (!studentDatabaseLoaded) {
+			studentDatabaseLoaded = loadStudentDatabase();
 		}
 	}
 
 	@SuppressWarnings("unchecked")
-	private boolean loadUserDatabase() {
-		if (databaseLoaded) {
+	private boolean loadStudentDatabase() {
+		if (studentDatabaseLoaded) {
 			return true;
 		}
 		ObjectInputStream input = null;
-		userDatabase = new File(databaseLocation);
-		if (userDatabase.exists()) {
+		studentDatabase = new File(studentDatabaseLocation);
+		if (studentDatabase.exists()) {
 			try {
-				input = new ObjectInputStream(new FileInputStream(userDatabase));
-				users = (HashMap<String, User>) (input.readObject());
+				input = new ObjectInputStream(new FileInputStream(
+						studentDatabase));
+				students = (HashMap<String, Student>) (input.readObject());
 			} catch (Exception e) {
 				e.printStackTrace();
 				return false;
 			}
 		} else {
 			System.out.println("Having to create database, okay on first run.");
-			users = new HashMap<String, User>();
-			users.put("test", new User("", "", "test", "letmein"));
+			students = new HashMap<String, Student>();
 			ObjectOutputStream oos = null;
 			try {
-				userDatabase = new File(databaseLocation);
-				FileOutputStream fos = new FileOutputStream(userDatabase);
+				studentDatabase = new File(studentDatabaseLocation);
+				FileOutputStream fos = new FileOutputStream(studentDatabase);
 				oos = new ObjectOutputStream(fos);
 			} catch (Exception e) {
 				e.printStackTrace();
 				return false;
 			}
 			try {
-				oos.writeObject(users);
+				oos.writeObject(students);
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
@@ -115,37 +133,57 @@ public class UserDatabase implements AdminDutiesInterface,
 		return true;
 	}
 
-	private void saveToDatabase() {
-		if (!databaseLoaded) {
-			System.out.println("Cannot save to database. No database loaded.");
-			return;
+	@SuppressWarnings("unchecked")
+	private boolean loadEmployerDatabase() {
+		if (employerDatabaseLoaded) {
+			return true;
 		}
-		ObjectOutputStream oos = null;
-		try {
-			oos = new ObjectOutputStream(new FileOutputStream(databaseLocation));
-		} catch (Exception e) {
-			e.printStackTrace();
-			return;
+		ObjectInputStream input = null;
+		employerDatabase = new File(employerDatabaseLocation);
+		if (employerDatabase.exists()) {
+			try {
+				input = new ObjectInputStream(new FileInputStream(
+						employerDatabase));
+				employers = (HashMap<String, Employer>) (input.readObject());
+			} catch (Exception e) {
+				e.printStackTrace();
+				return false;
+			}
+		} else {
+			System.out.println("Having to create database, okay on first run.");
+			employers = new HashMap<String, Employer>();
+			ObjectOutputStream oos = null;
+			try {
+				employerDatabase = new File(employerDatabaseLocation);
+				FileOutputStream fos = new FileOutputStream(employerDatabase);
+				oos = new ObjectOutputStream(fos);
+			} catch (Exception e) {
+				e.printStackTrace();
+				return false;
+			}
+			try {
+				oos.writeObject(employers);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+			try {
+				oos.close();
+			} catch (Exception e) {
+				e.printStackTrace();
+				return false;
+			}
 		}
-		try {
-			oos.writeObject(users);
-		} catch (Exception e) {
-			e.printStackTrace();
+		if (input != null) {
+			try {
+				input.close();
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
 		}
-		try {
-			oos.close();
-		} catch (Exception e) {
-			e.printStackTrace();
-			return;
-		}
+		return true;
 	}
 
 	public static final void main(String[] args) {
 		UserDatabase db = new UserDatabase();
-		System.out.println("Logged in: " + db.login("test", "letmein"));
-		System.out.println("Logged in: " + db.login("test", "don'tletmein"));
-		System.out.println("Logged in: " + db.login("idon'texist", "letmein"));
-
 	}
-
 }
