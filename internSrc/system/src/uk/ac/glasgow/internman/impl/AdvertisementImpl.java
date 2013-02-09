@@ -14,6 +14,7 @@ public class AdvertisementImpl implements Advertisement {
 	private Employer employer;
 	private Map<Integer, Role> roles;
 	private int numberOfRoles;
+	private AdvertisementStatus status;
 
 	public AdvertisementImpl(String title, String location, Employer employer) {
 		this.title = title;
@@ -21,6 +22,7 @@ public class AdvertisementImpl implements Advertisement {
 		this.employer = employer;
 		roles = new HashMap<Integer, Role>();
 		numberOfRoles = 0;
+		status = AdvertisementStatus.PENDING;
 	}
 
 	@Override
@@ -46,8 +48,7 @@ public class AdvertisementImpl implements Advertisement {
 
 	@Override
 	public AdvertisementStatus getStatus() {
-		/* AdvertisementStatus type? */
-		return null;
+		return status;
 	}
 
 	@Override
