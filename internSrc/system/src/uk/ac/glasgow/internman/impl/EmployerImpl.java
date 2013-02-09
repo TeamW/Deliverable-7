@@ -4,26 +4,29 @@ import uk.ac.glasgow.internman.Employer;
 
 public class EmployerImpl implements Employer {
 
-	public EmployerImpl() {
-		// TODO Auto-generated constructor stub
+	private String name;
+	private String emailAddress;
+	private String password;
+
+	public EmployerImpl(String name, String emailAddress) {
+		this.name = name;
+		this.emailAddress = emailAddress;
+		this.password = "letmein";
 	}
 
 	@Override
 	public String getName() {
-		// TODO Auto-generated method stub
-		return null;
+		return name;
 	}
 
 	@Override
 	public String getEmailAddress() {
-		// TODO Auto-generated method stub
-		return null;
+		return emailAddress;
 	}
 
 	@Override
 	public boolean authenticate(String password) {
-		// TODO Auto-generated method stub
-		return false;
+		return this.password.equals(password);
 	}
 
 }
