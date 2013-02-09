@@ -6,26 +6,29 @@ import uk.ac.glasgow.internman.Visitor;
 
 public class VisitImpl implements Visit {
 
-	public VisitImpl() {
-		// TODO Auto-generated constructor stub
+	private Visitor visitor;
+	private UoGGrade grade;
+	private String description;
+
+	public VisitImpl(Visitor visitor, UoGGrade grade, String description) {
+		this.visitor = visitor;
+		this.grade = grade;
+		this.description = description;
 	}
 
 	@Override
 	public Visitor getVisitor() {
-		// TODO Auto-generated method stub
-		return null;
+		return visitor;
 	}
 
 	@Override
 	public UoGGrade getGrade() {
-		// TODO Auto-generated method stub
-		return null;
+		return grade;
 	}
 
 	@Override
 	public String getDescription() {
-		// TODO Auto-generated method stub
-		return null;
+		return description;
 	}
 
 }
