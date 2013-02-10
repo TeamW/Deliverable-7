@@ -42,7 +42,9 @@ public class Session implements InternMan {
 
 	@Override
 	public boolean login(String userName, String password) {
-		return login.verifyUser(userName, password);
+		if(!login.userLoggedIn(userName))
+			return login.verifyUser(userName, password);
+		return true;
 	}
 
 	@Override
