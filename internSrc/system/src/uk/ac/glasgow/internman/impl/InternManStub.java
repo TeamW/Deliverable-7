@@ -24,6 +24,7 @@ import uk.ac.glasgow.internman.ui.InternManCLUI;;
  */
 public class InternManStub implements InternMan {
 	
+	private static final long serialVersionUID = 1L;
 	private float timeLoggedIn = 0;
 	private float timeLogOut = 60 * 30; //logout after 30 mins
 	private InternManCLUI userInterface;

@@ -6,6 +6,7 @@ import uk.ac.glasgow.internman.users.User;
 
 public class StudentImpl extends User implements Student {
 
+	private static final long serialVersionUID = 1L;
 	private String forename;
 	private String surname;
 	private String email;

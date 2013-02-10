@@ -5,6 +5,7 @@ import uk.ac.glasgow.internman.users.User;
 
 public class EmployerImpl extends User implements Employer {
 
+	private static final long serialVersionUID = 1L;
 	private String name;
 	private String emailAddress;
 

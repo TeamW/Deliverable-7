@@ -39,6 +39,10 @@ public class RoleImpl implements Role {
 	public Date getEnd() {
 		return end;
 	}
+	
+	public String getDescription() {
+		return description;
+	}
 
 	@Override
 	public Double getSalary() {
