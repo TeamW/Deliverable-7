@@ -22,7 +22,7 @@ import uk.ac.glasgow.internman.ui.InternManCLUI;;
  * @author 1002536r
  *
  */
-public class InternManStub implements InternMan {
+public class Session implements InternMan {
 	
 	private static final long serialVersionUID = 1L;
 	private float timeLoggedIn = 0;
@@ -30,14 +30,14 @@ public class InternManStub implements InternMan {
 	private InternManCLUI userInterface;
 	
 
-	public InternManStub(UserStore users) {
+	public Session(UserStore users) {
 	}
 	
 	public static void main(String[] args){
 		UserStore userStore = new UserStoreImpl("data/users.obj");
 		userStore.addUser("Storer", "Tim", "tws", "1234");
 
-		InternMan facade = new InternManStub(userStore);
+		InternMan facade = new Session(userStore);
 		
 		SystemDialogue dialogue = new SystemDialogue(System.in, System.out, System.err);
 
