@@ -26,7 +26,8 @@ public class Session implements InternMan {
 	private float timeLoggedIn = 0;
 	private float timeLogOut = 60 * 30; //logout after 30 mins
 	private LoginImpl login;
-
+	private User currentUser;
+	
 	public Session() {
 		login = new LoginImpl();
 	}
@@ -43,13 +44,20 @@ public class Session implements InternMan {
 	@Override
 	public boolean login(String userName, String password) {
 		if(!login.userLoggedIn(userName))
-			return login.verifyUser(userName, password);
+			if(login.verifyUser(userName, password))
+			{
+				currentUser = new User(userName, password);
+				return true;
+			}
+			else
+				return false;
 		return true;
 	}
 
 	@Override
 	public User getCurrentUser() {
-		return null;
+		//what if user null/not instantiated?
+		return currentUser;
 	}
 
 	@Override
