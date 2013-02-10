@@ -88,7 +88,7 @@ public class Session implements InternMan {
 
 	@Override
 	public Advertisement selectAdvertisement(Integer index) {
-		return null;
+		return adManager.selectAdvertisement(index);
 	}
 
 	@Override
