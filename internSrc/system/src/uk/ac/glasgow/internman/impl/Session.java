@@ -11,7 +11,8 @@ import uk.ac.glasgow.internman.Role;
 import uk.ac.glasgow.internman.Student;
 import uk.ac.glasgow.internman.UoGGrade;
 import uk.ac.glasgow.internman.users.User;
-import uk.ac.glasgow.internman.ui.InternManCLUI;;
+import uk.ac.glasgow.internman.ui.InternManCLUI;
+import uk.ac.glasgow.internman.impl.login.LoginImpl;;
 
 
 /**
@@ -24,9 +25,10 @@ public class Session implements InternMan {
 	
 	private float timeLoggedIn = 0;
 	private float timeLogOut = 60 * 30; //logout after 30 mins
-	
+	private LoginImpl login;
 
 	public Session() {
+		login = new LoginImpl();
 	}
 	
 	public static void main(String[] args){
@@ -40,7 +42,7 @@ public class Session implements InternMan {
 
 	@Override
 	public boolean login(String userName, String password) {
-		return false;
+		return login.verifyUser(userName, password);
 	}
 
 	@Override
