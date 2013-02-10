@@ -5,7 +5,8 @@ import uk.ac.glasgow.internman.*;
 public interface AdminDutiesInterface {
 
 	/* Renamed from addCompany */
-	public boolean addEmployer(String employerName, String employerEmail, String password);
+	public boolean addEmployer(String employerName, String employerEmail,
+			String password);
 
 	/* Renamed from getCompany */
 	public Employer getEmployer(String employerName);
@@ -13,4 +14,7 @@ public interface AdminDutiesInterface {
 	public Student getStudent(String guid);
 
 	public void updateStudent(Student student);
+
+	public UserDatabase getInstance();
+
 }

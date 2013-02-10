@@ -26,11 +26,17 @@ public class UserDatabase implements AdminDutiesInterface,
 	private File employerDatabase;
 	private HashMap<String, Employer> employers;
 
-	public UserDatabase() {
+	private static final UserDatabase userDatabase = new UserDatabase();
+
+	private UserDatabase() {
 		studentDatabaseLoaded = false;
 		employerDatabaseLoaded = false;
 		loadStudentDatabase();
 		loadEmployerDatabase();
+	}
+
+	public UserDatabase getInstance() {
+		return userDatabase;
 	}
 
 	@Override
@@ -252,7 +258,4 @@ public class UserDatabase implements AdminDutiesInterface,
 		return true;
 	}
 
-	public static final void main(String[] args) {
-		UserDatabase db = new UserDatabase();
-	}
 }
