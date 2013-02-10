@@ -29,10 +29,8 @@ public class UserDatabase implements AdminDutiesInterface,
 	private static final UserDatabase userDatabase = new UserDatabase();
 
 	private UserDatabase() {
-		studentDatabaseLoaded = false;
-		employerDatabaseLoaded = false;
-		loadStudentDatabase();
-		loadEmployerDatabase();
+		studentDatabaseLoaded = loadStudentDatabase();
+		employerDatabaseLoaded = loadEmployerDatabase();
 	}
 
 	public UserDatabase getInstance() {
