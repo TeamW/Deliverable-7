@@ -1,24 +1,23 @@
 package uk.ac.glasgow.internman.users;
 
 import java.io.Serializable;
-import java.util.HashSet;
-import java.util.Set;
 
 public class User implements Serializable {
 
-	private String surname;
-	private String forename;
-	private String GUID;
+	private static final long serialVersionUID = 1L;
+	private String username;
 	private String password;
-		
-	public User (String surname, String forename, String GUID, String password){
-		this.surname = surname;
-		this.forename = forename;
-		this.GUID = GUID;
+
+	public User(String username, String password) {
+		this.username = username;
 		this.password = password;
 	}
-	
-	public boolean authenticate (String password){
+
+	public String getUsername() {
+		return username;
+	}
+
+	public boolean authenticate(String password) {
 		return this.password.equals(password);
 	}
 }

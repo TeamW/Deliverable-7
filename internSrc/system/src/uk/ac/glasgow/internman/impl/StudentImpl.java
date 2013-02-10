@@ -16,7 +16,7 @@ public class StudentImpl extends User implements Student {
 
 	public StudentImpl(String forename, String surname, String email,
 			String matric, Programme programme) {
-		super(surname, forename, matric, "letmein");
+		super(matric, "letmein");
 		this.forename = forename;
 		this.surname = surname;
 		this.email = email;

@@ -10,7 +10,7 @@ public class EmployerImpl extends User implements Employer {
 	private String emailAddress;
 
 	public EmployerImpl(String name, String emailAddress) {
-		super("", "", name, "letmein");
+		super(name, "letmein");
 		this.name = name;
 		this.emailAddress = emailAddress;
 	}
