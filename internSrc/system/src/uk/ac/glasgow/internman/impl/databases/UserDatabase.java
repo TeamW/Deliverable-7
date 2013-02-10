@@ -26,11 +26,18 @@ public class UserDatabase implements AdminDutiesInterface,
 	private File employerDatabase;
 	private HashMap<String, Employer> employers;
 
+	private boolean ccDatabaseLoaded;
+	private static final String ccDatabaseLocation = System
+			.getProperty("user.dir") + "/employer.database";
+	private File ccDatabase;
+	private CourseCoordinator cc;
+
 	private static final UserDatabase userDatabase = new UserDatabase();
 
 	private UserDatabase() {
 		studentDatabaseLoaded = loadStudentDatabase();
 		employerDatabaseLoaded = loadEmployerDatabase();
+		ccDatabaseLoaded = loadCCDatabase();
 	}
 
 	public UserDatabase getInstance() {
@@ -53,6 +60,14 @@ public class UserDatabase implements AdminDutiesInterface,
 		}
 		Employer employer = employers.get(name);
 		return (employer == null) ? false : employer.authenticate(password);
+	}
+
+	@Override
+	public boolean loginCourseCoordinator(String name, String password) {
+		if (!ccDatabaseLoaded) {
+			ccDatabaseLoaded = loadCCDatabase();
+		}
+		return (cc == null) ? false : cc.authenticate(password);
 	}
 
 	@Override
@@ -100,6 +115,54 @@ public class UserDatabase implements AdminDutiesInterface,
 			temp = student;
 		}
 		updateStudentDatabase();
+	}
+
+	private boolean loadCCDatabase() {
+		if (ccDatabaseLoaded) {
+			return true;
+		}
+		ObjectInputStream input = null;
+		ccDatabase = new File(ccDatabaseLocation);
+		if (ccDatabase.exists()) {
+			try {
+				input = new ObjectInputStream(new FileInputStream(ccDatabase));
+				cc = (CourseCoordinator) (input.readObject());
+			} catch (Exception e) {
+				e.printStackTrace();
+				return false;
+			}
+		} else {
+			System.out.println("Having to create database, okay on first run.");
+			cc = new CourseCoordinatorImpl("test", "letmein");
+			ObjectOutputStream oos = null;
+			try {
+				ccDatabase = new File(ccDatabaseLocation);
+				FileOutputStream fos = new FileOutputStream(ccDatabase);
+				oos = new ObjectOutputStream(fos);
+			} catch (Exception e) {
+				e.printStackTrace();
+				return false;
+			}
+			try {
+				oos.writeObject(cc);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+			try {
+				oos.close();
+			} catch (Exception e) {
+				e.printStackTrace();
+				return false;
+			}
+		}
+		if (input != null) {
+			try {
+				input.close();
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+		}
+		return true;
 	}
 
 	@SuppressWarnings("unchecked")
