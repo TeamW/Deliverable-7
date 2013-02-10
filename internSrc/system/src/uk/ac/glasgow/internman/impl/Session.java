@@ -114,8 +114,7 @@ public class Session implements InternMan {
 
 	@Override
 	public Student selectStudent(String matriculation) {
-		//userDatabase implements the right interface but has a private constructor?
-		return null;
+		return userDatabase.getStudent(matriculation);
 	}
 
 	@Override
