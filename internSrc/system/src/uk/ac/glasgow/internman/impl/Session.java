@@ -2,6 +2,7 @@ package uk.ac.glasgow.internman.impl;
 
 import java.util.Date;
 import java.util.Map;
+import java.util.Random;
 
 import uk.ac.glasgow.clui.SystemDialogue;
 import uk.ac.glasgow.internman.Advertisement;
@@ -30,6 +31,7 @@ public class Session implements InternMan {
 	private LoginImpl login;
 	private User currentUser;
 	private AdManager adManager;
+	private UserDatabase userDatabase;
 	
 	public Session() {
 		login = new LoginImpl();
@@ -77,7 +79,20 @@ public class Session implements InternMan {
 
 	@Override
 	public Employer registerNewEmployer(String name, String emailAddress) {
-		//userDatabase implements the right interface but has a private constructor?
+		//DOES NOT CHECK THAT EMPLOYER ALREADY REGISTERED
+		
+		//random string generator from internet
+		int length = 8; //8 letter password
+		String charset = "0123456789" +
+        "abcdefghijklmnopqrstuvwxyz" +
+        "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+		Random rand = new Random(System.currentTimeMillis());
+        StringBuffer sb = new StringBuffer();
+        for (int i = 0; i <= length; i++ ) {
+            int pos = rand.nextInt(charset.length());
+            sb.append(charset.charAt(pos));
+        }
+		userDatabase.addEmployer(name, emailAddress, sb.toString());
 		return null;
 	}
 
@@ -93,16 +108,19 @@ public class Session implements InternMan {
 
 	@Override
 	public Role selectRole(Integer advertisementIndex, Integer roleIndex) {
+		//no idea
 		return null;
 	}
 
 	@Override
 	public Student selectStudent(String matriculation) {
+		//userDatabase implements the right interface but has a private constructor?
 		return null;
 	}
 
 	@Override
 	public void publishAdvertisement(Integer advertisementIndex, String comment) {
+		adManager.publishAdvertisement(advertisementIndex, comment);
 	}
 
 	@Override
