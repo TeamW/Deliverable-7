@@ -30,14 +30,11 @@ public class Session implements InternMan {
 	private InternManCLUI userInterface;
 	
 
-	public Session(UserStore users) {
+	public Session() {
 	}
 	
 	public static void main(String[] args){
-		UserStore userStore = new UserStoreImpl("data/users.obj");
-		userStore.addUser("Storer", "Tim", "tws", "1234");
-
-		InternMan facade = new Session(userStore);
+		InternMan facade = new Session();
 		
 		SystemDialogue dialogue = new SystemDialogue(System.in, System.out, System.err);
 
