@@ -33,11 +33,7 @@ public class InternManCLUI extends CommandLineUI<InternMan> {
 	 * @param args - the program does not accept any optional arguments.
 	 */
 	public static void main(String[] args) {
-		
-		UserStore userStore = new UserStoreImpl("data/users.obj");
-		userStore.addUser("Storer", "Tim", "tws", "1234");
-
-		InternMan facade = new Session(userStore);
+		InternMan facade = new Session();
 		
 		SystemDialogue dialogue = new SystemDialogue(System.in, System.out, System.err);
 
