@@ -20,10 +20,12 @@ public class UserStoreImpl implements UserStore {
 	 * Constructs a new store in the specified file location.
 	 * @param fileName
 	 */
+	@SuppressWarnings("unchecked")
 	public UserStoreImpl(String fileName){
 		storeFile = new File(fileName);
 		if (storeFile.exists()){
 			try {
+				@SuppressWarnings("resource")
 				ObjectInputStream ois = 
 					new ObjectInputStream(new FileInputStream(storeFile));
 				users = (Map<String,User>)(ois.readObject());
@@ -41,7 +43,7 @@ public class UserStoreImpl implements UserStore {
 	
 	@Override
 	public void addUser(String surname, String forename, String GUID, String password) {
-		User user = new User(surname,forename,GUID,password);
+		User user = new User(GUID,password);
 		users.put(GUID,user);
 		
 		try {
