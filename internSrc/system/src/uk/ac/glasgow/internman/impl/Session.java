@@ -24,7 +24,6 @@ public class Session implements InternMan {
 	
 	private float timeLoggedIn = 0;
 	private float timeLogOut = 60 * 30; //logout after 30 mins
-	private InternManCLUI userInterface;
 	
 
 	public Session() {
