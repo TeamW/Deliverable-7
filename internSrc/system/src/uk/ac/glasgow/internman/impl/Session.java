@@ -13,6 +13,7 @@ import uk.ac.glasgow.internman.UoGGrade;
 import uk.ac.glasgow.internman.users.User;
 import uk.ac.glasgow.internman.ui.InternManCLUI;
 import uk.ac.glasgow.internman.impl.adManager.AdManager;
+import uk.ac.glasgow.internman.impl.databases.UserDatabase;
 import uk.ac.glasgow.internman.impl.login.LoginImpl;;
 
 
@@ -70,17 +71,19 @@ public class Session implements InternMan {
 
 	@Override
 	public Map<String, Student> getStudents() {
+		//no method for this yet?
 		return null;
 	}
 
 	@Override
 	public Employer registerNewEmployer(String name, String emailAddress) {
+		//userDatabase implements the right interface but has a private constructor?
 		return null;
 	}
 
 	@Override
 	public Advertisement createNewAdvertisement(String applicationDetails) {
-		return null;
+		return adManager.createNewAdvertisement(applicationDetails);
 	}
 
 	@Override
