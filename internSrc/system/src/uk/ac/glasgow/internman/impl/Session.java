@@ -12,6 +12,7 @@ import uk.ac.glasgow.internman.Student;
 import uk.ac.glasgow.internman.UoGGrade;
 import uk.ac.glasgow.internman.users.User;
 import uk.ac.glasgow.internman.ui.InternManCLUI;
+import uk.ac.glasgow.internman.impl.adManager.AdManager;
 import uk.ac.glasgow.internman.impl.login.LoginImpl;;
 
 
@@ -27,9 +28,11 @@ public class Session implements InternMan {
 	private float timeLogOut = 60 * 30; //logout after 30 mins
 	private LoginImpl login;
 	private User currentUser;
+	private AdManager adManager;
 	
 	public Session() {
 		login = new LoginImpl();
+		adManager = new AdManager();
 	}
 	
 	public static void main(String[] args){
@@ -62,7 +65,7 @@ public class Session implements InternMan {
 
 	@Override
 	public Map<Integer, Advertisement> getAdvertisements() {
-		return null;
+		return adManager.getAdvertisements();
 	}
 
 	@Override
