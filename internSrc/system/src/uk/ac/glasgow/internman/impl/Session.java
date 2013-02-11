@@ -6,6 +6,7 @@ import java.util.Map;
 import uk.ac.glasgow.clui.SystemCommand;
 import uk.ac.glasgow.clui.SystemDialogue;
 import uk.ac.glasgow.internman.Advertisement;
+import uk.ac.glasgow.internman.CourseCoordinator;
 import uk.ac.glasgow.internman.Employer;
 import uk.ac.glasgow.internman.InternMan;
 import uk.ac.glasgow.internman.Role;
@@ -109,7 +110,9 @@ public class Session implements InternMan {
 	@Override
 	public Map<String, Student> getStudents() {
 		//no method for this yet?
-		return admin.getStudents();
+		if(currentUser instanceof CourseCoordinator)
+			return admin.getStudents();
+		return null;
 	}
 
 	@Override
