@@ -8,8 +8,6 @@ import uk.ac.glasgow.internman.Role;
 
 public class AdvertisementImpl implements Advertisement {
 
-	private String title;
-	private String location;
 	private String comments;
 	private String details;
 	private Employer employer;
@@ -17,10 +15,8 @@ public class AdvertisementImpl implements Advertisement {
 	private int numberOfRoles;
 	private AdvertisementStatus status;
 
-	public AdvertisementImpl(String title, String location, String details, Employer employer) {
-		this.title = title;
-		this.location = location;
-		this.employer = employer;
+	public AdvertisementImpl(Employer e, String details) {
+		this.employer = e;
 		this.details = details;
 		roles = new HashMap<Integer, Role>();
 		numberOfRoles = 0;
@@ -39,17 +35,12 @@ public class AdvertisementImpl implements Advertisement {
 
 	@Override
 	public String getApplicationDetails() {
-		return "Title: " + title + "\n" + "Location: " + location + "\n"
-				+ "Employer: " + employer.getName();
+		return details;
 	}
 
 	@Override
 	public String getComments() {
 		return comments;
-	}
-	
-	public String getDetails() {
-		return details;
 	}
 
 	@Override

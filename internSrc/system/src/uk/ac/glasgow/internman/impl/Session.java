@@ -25,9 +25,6 @@ import uk.ac.glasgow.internman.impl.login.LoginImpl;;
  *
  */
 public class Session implements InternMan {
-	
-	private float timeLoggedIn = 0;
-	private float timeLogOut = 60 * 30; //logout after 30 mins
 	private LoginImpl login;
 	private User currentUser;
 	private AdManager adManager;
@@ -99,7 +96,7 @@ public class Session implements InternMan {
 
 	@Override
 	public Advertisement createNewAdvertisement(String applicationDetails) {
-		return adManager.createNewAdvertisement(applicationDetails);
+		return adManager.createNewAdvertisement((Employer) currentUser, applicationDetails);
 	}
 
 	@Override

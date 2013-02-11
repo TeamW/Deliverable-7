@@ -19,5 +19,9 @@ public interface Internship {
 	InternshipStatus getStatus();
 
 	Visit getVisit();
+	
+	void approve();
+	
+	void setVisit(Visit v);
 
 }

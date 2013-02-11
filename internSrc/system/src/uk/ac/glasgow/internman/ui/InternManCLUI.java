@@ -5,8 +5,6 @@ import uk.ac.glasgow.clui.SystemCommand;
 import uk.ac.glasgow.clui.SystemDialogue;
 import uk.ac.glasgow.internman.InternMan;
 import uk.ac.glasgow.internman.impl.Session;
-import uk.ac.glasgow.internman.users.UserStore;
-import uk.ac.glasgow.internman.users.UserStoreImpl;
 
 /**
  * Extends the CommandLineUI framework class to provide a command line user
@@ -42,8 +40,8 @@ public class InternManCLUI extends CommandLineUI<InternMan> {
 		SystemCommand<InternMan> showAdvertisementSummary
 			=  new ViewAdvertisementSummaryCommand(facade,dialogue);
 		
-		//userInterface.addSystemCommand(
-		//		"ShowAdvertisementSummary", showAdvertisementSummary);
+		userInterface.addSystemCommand(
+				"ShowAdvertisementSummary", showAdvertisementSummary);
 
 		userInterface.addSystemCommand(
 		    "Login", new LoginCommand(facade,dialogue));

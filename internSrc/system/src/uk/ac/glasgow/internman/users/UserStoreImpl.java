@@ -25,7 +25,6 @@ public class UserStoreImpl implements UserStore {
 		storeFile = new File(fileName);
 		if (storeFile.exists()){
 			try {
-				@SuppressWarnings("resource")
 				ObjectInputStream ois = 
 					new ObjectInputStream(new FileInputStream(storeFile));
 				users = (Map<String,User>)(ois.readObject());

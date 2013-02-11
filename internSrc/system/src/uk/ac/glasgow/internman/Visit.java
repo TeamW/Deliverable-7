@@ -8,4 +8,8 @@ public interface Visit {
 
 	String getDescription();
 
+	void setUoGGrade(UoGGrade grade);
+
+	void setDescription(String description);
+
 }

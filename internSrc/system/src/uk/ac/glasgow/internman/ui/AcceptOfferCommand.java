@@ -12,7 +12,6 @@ import uk.ac.glasgow.clui.MinimumArguments;
 import uk.ac.glasgow.clui.SystemCommand;
 import uk.ac.glasgow.clui.SystemCommandException;
 import uk.ac.glasgow.clui.SystemDialogue;
-import uk.ac.glasgow.internman.Advertisement;
 import uk.ac.glasgow.internman.InternMan;
 import uk.ac.glasgow.internman.Role;
 

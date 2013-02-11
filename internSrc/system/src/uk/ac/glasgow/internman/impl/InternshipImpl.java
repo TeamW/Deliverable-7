@@ -64,5 +64,15 @@ public class InternshipImpl implements Internship {
 	public Visit getVisit() {
 		return visit;
 	}
+	
+	@Override
+	public void approve(){
+		this.status = InternshipStatus.APPROVED;
+	}
+	
+	@Override
+	public void setVisit(Visit v){
+		this.visit = v;
+	}
 
 }

@@ -18,8 +18,6 @@ public interface Advertisement {
 	String getComments();
 
 	AdvertisementStatus getStatus();
-
-	String getDetails();
 	
 	Role addNewRole(
 			String title, String location, Date start, Date end, String description, Double salary);

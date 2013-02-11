@@ -1,6 +1,8 @@
 package uk.ac.glasgow.internman.impl.admin;
 
 import uk.ac.glasgow.internman.Advertisement;
+import uk.ac.glasgow.internman.CourseCoordinator;
+import uk.ac.glasgow.internman.Employer;
 import uk.ac.glasgow.internman.Student;
 import uk.ac.glasgow.internman.UoGGrade;
 
@@ -21,11 +23,15 @@ void publishAdvertisement(int advertisementIndex, String comment);
 	
 	void assignAcademicVisitor(String matriculation, String visitorName);
 	
-	Advertisement createNewAdvertisement(String applicationDetails);
+	Advertisement createNewAdvertisement(Employer e, String applicationDetails);
 	
 	Student selectStudent(String matriculation);
 	
 	void recordVisitAssessment(String matriculation, UoGGrade grade, String description);
 	
+	Employer getCurrentEmployer(String employer);
+
+	CourseCoordinator getCourseCoordinator();
+
 
 }

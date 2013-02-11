@@ -10,7 +10,7 @@ import java.util.Map;
  */
 public interface AdManagerInterface {
 	
-	public Advertisement createNewAdvertisement(String applicationDetails);
+	public Advertisement createNewAdvertisement(Employer e, String applicationDetails);
 	
 	public Advertisement selectAdvertisement(Integer index);
 	
