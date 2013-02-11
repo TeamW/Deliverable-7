@@ -8,6 +8,7 @@ import uk.ac.glasgow.internman.Role;
 
 public class AdvertisementImpl implements Advertisement {
 
+	private static final long serialVersionUID = 1L;
 	private String comments;
 	private String details;
 	private Employer employer;
@@ -28,13 +29,11 @@ public class AdvertisementImpl implements Advertisement {
 		return roles;
 	}
 
-	public void PublishAd(){
+	public void PublishAd() {
 		this.status = AdvertisementStatus.PUBLISHED;
-		
+
 	}
-	
-	
-	
+
 	@Override
 	public Employer getEmployer() {
 		return employer;
