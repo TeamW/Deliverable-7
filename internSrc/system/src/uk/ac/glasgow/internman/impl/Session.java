@@ -147,7 +147,7 @@ public class Session implements InternMan {
 	@Override
 	public void notifyAcceptedOffer(Role role, String managerName,
 			String managerEmail) {
-		//no idea
+		//needs to be implemented in one of the interfaces.
 	}
 
 	@Override
