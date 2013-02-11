@@ -1,5 +1,7 @@
 package uk.ac.glasgow.internman.impl.admin;
 
+import java.util.Map;
+
 import uk.ac.glasgow.internman.*;
 import uk.ac.glasgow.internman.impl.*;
 import uk.ac.glasgow.internman.impl.adManager.AdManager;
@@ -74,6 +76,11 @@ public class Admin implements AdminInterface {
 	@Override
 	public CourseCoordinator getCourseCoordinator() {
 		return UD.getCourseCoordinator();
+	}
+
+	@Override
+	public Map<String, Student> getStudents() {
+		return UD.getStudents();
 	}
 
 }

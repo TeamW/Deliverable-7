@@ -1,5 +1,7 @@
 package uk.ac.glasgow.internman.impl.admin;
 
+import java.util.Map;
+
 import uk.ac.glasgow.internman.Advertisement;
 import uk.ac.glasgow.internman.CourseCoordinator;
 import uk.ac.glasgow.internman.Employer;
@@ -28,6 +30,8 @@ void publishAdvertisement(int advertisementIndex, String comment);
 	Student selectStudent(String matriculation);
 	
 	void recordVisitAssessment(String matriculation, UoGGrade grade, String description);
+	
+	Map<String,Student> getStudents();
 	
 	Employer getCurrentEmployer(String employer);
 
