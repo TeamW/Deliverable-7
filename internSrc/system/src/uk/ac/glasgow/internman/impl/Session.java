@@ -27,7 +27,7 @@ import uk.ac.glasgow.internman.impl.login.LoginImpl;;
  */
 public class Session implements InternMan {
 	private LoginImpl login;
-	private User currentUser;
+	private User currentUser = null;
 	private AdManager adManager;
 	private Admin admin;
 	
@@ -98,7 +98,6 @@ public class Session implements InternMan {
 
 	@Override
 	public User getCurrentUser() {
-		//what if user null/not instantiated?
 		return currentUser;
 	}
 
