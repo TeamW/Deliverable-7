@@ -11,15 +11,17 @@ public class AdvertisementImpl implements Advertisement {
 	private String title;
 	private String location;
 	private String comments;
+	private String details;
 	private Employer employer;
 	private Map<Integer, Role> roles;
 	private int numberOfRoles;
 	private AdvertisementStatus status;
 
-	public AdvertisementImpl(String title, String location, Employer employer) {
+	public AdvertisementImpl(String title, String location, String details, Employer employer) {
 		this.title = title;
 		this.location = location;
 		this.employer = employer;
+		this.details = details;
 		roles = new HashMap<Integer, Role>();
 		numberOfRoles = 0;
 		status = AdvertisementStatus.PENDING;
@@ -44,6 +46,10 @@ public class AdvertisementImpl implements Advertisement {
 	@Override
 	public String getComments() {
 		return comments;
+	}
+	
+	public String getDetails() {
+		return details;
 	}
 
 	@Override
