@@ -9,8 +9,8 @@ public class EmployerImpl extends User implements Employer {
 	private String name;
 	private String emailAddress;
 
-	public EmployerImpl(String name, String emailAddress) {
-		super(name, "letmein");
+	public EmployerImpl(String name, String emailAddress, String password) {
+		super(name, password);
 		this.name = name;
 		this.emailAddress = emailAddress;
 	}

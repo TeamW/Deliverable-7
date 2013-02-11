@@ -5,16 +5,17 @@ import uk.ac.glasgow.internman.*;
 public interface AdminDutiesInterface {
 
 	/* Renamed from addCompany */
-	public boolean addEmployer(String employerName, String employerEmail,
-			String password);
+	public boolean addEmployer(Employer e);
 
 	/* Renamed from getCompany */
 	public Employer getEmployer(String employerName);
 
 	public Student getStudent(String guid);
+	
+	public CourseCoordinator getCourseCoordinator();
 
 	public void updateStudent(Student student);
-
-	public UserDatabase getInstance();
+	
+	public void changeCourseCoordinator(String username, String password);
 
 }

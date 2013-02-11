@@ -92,8 +92,9 @@ public class Session implements InternMan {
             int pos = rand.nextInt(charset.length());
             sb.append(charset.charAt(pos));
         }
-		userDatabase.addEmployer(name, emailAddress, sb.toString());
-		return null;
+        Employer e = new EmployerImpl(name, emailAddress, sb.toString());
+		userDatabase.addEmployer(e);
+		return e;
 	}
 
 	@Override
