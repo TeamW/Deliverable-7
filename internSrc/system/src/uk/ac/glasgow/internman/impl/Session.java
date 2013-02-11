@@ -163,14 +163,16 @@ public class Session implements InternMan {
 	@Override
 	public Role selectRole(Integer advertisementIndex, Integer roleIndex) {
 		Advertisement ad = adManager.selectAdvertisement(advertisementIndex);
-		if (currentUser instanceof CourseCoordinator)
-			return ad.getRoles().get(roleIndex);
-		if (currentUser instanceof Student && 
-				ad.getStatus() == Advertisement.AdvertisementStatus.PUBLISHED)
-			return ad.getRoles().get(roleIndex);
-		else if(currentUser instanceof Employer &&
-				currentUser == ad.getEmployer())
-			return ad.getRoles().get(roleIndex);
+		if(ad != null){
+			if (currentUser instanceof CourseCoordinator)
+				return ad.getRoles().get(roleIndex);
+			if (currentUser instanceof Student && 
+					ad.getStatus() == Advertisement.AdvertisementStatus.PUBLISHED)
+				return ad.getRoles().get(roleIndex);
+			else if(currentUser instanceof Employer &&
+					currentUser == ad.getEmployer())
+				return ad.getRoles().get(roleIndex);
+		}
 		return null;
 	}
 
