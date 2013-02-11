@@ -2,7 +2,6 @@ package uk.ac.glasgow.internman.impl;
 
 import java.util.Date;
 import java.util.Map;
-import java.util.Random;
 
 import uk.ac.glasgow.clui.SystemCommand;
 import uk.ac.glasgow.clui.SystemDialogue;
@@ -91,6 +90,7 @@ public class Session implements InternMan {
 
 	@Override
 	public boolean login(String userName, String password) {
+		//if the user is already logged in just return true
 		if(!login.userLoggedIn(userName))
 			if(login.verifyUser(userName, password))
 			{
@@ -122,21 +122,7 @@ public class Session implements InternMan {
 	@Override
 	public Employer registerNewEmployer(String name, String emailAddress) {
 		//DOES NOT CHECK THAT EMPLOYER ALREADY REGISTERED
-		
-		//random string generator from internet
-		int length = 8; //8 letter password
-		String charset = "0123456789" +
-        "abcdefghijklmnopqrstuvwxyz" +
-        "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-		Random rand = new Random(System.currentTimeMillis());
-        StringBuffer sb = new StringBuffer();
-        for (int i = 0; i <= length; i++ ) {
-            int pos = rand.nextInt(charset.length());
-            sb.append(charset.charAt(pos));
-        }
-        Employer e = new EmployerImpl(name, emailAddress, sb.toString());
-		admin.registerNewEmployer(e.getName(), e.getEmailAddress());
-		return e;
+		return admin.registerNewEmployer(name, emailAddress);
 	}
 
 	@Override
@@ -157,7 +143,7 @@ public class Session implements InternMan {
 
 	@Override
 	public Student selectStudent(String matriculation) {
-		return userDatabase.getStudent(matriculation);
+		return admin.selectStudent(matriculation);
 	}
 
 	@Override
