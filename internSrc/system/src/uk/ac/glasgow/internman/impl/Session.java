@@ -150,7 +150,8 @@ public class Session implements InternMan {
 
 	@Override
 	public void publishAdvertisement(Integer advertisementIndex, String comment) {
-		adManager.publishAdvertisement(advertisementIndex, comment);
+		//adManager takes an integer, but not a string?
+		//adManager.publishAdvertisement(advertisementIndex);
 	}
 
 	@Override
