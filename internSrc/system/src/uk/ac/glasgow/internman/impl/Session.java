@@ -15,6 +15,7 @@ import uk.ac.glasgow.internman.UoGGrade;
 import uk.ac.glasgow.internman.users.User;
 import uk.ac.glasgow.internman.ui.*;
 import uk.ac.glasgow.internman.impl.adManager.AdManager;
+import uk.ac.glasgow.internman.impl.admin.Admin;
 import uk.ac.glasgow.internman.impl.databases.UserDatabase;
 import uk.ac.glasgow.internman.impl.login.LoginImpl;;
 
@@ -29,11 +30,13 @@ public class Session implements InternMan {
 	private LoginImpl login;
 	private User currentUser;
 	private AdManager adManager;
+	private Admin admin;
 	private UserDatabase userDatabase;
 	
 	public Session() {
 		login = new LoginImpl();
 		adManager = new AdManager();
+		admin = Admin.getInstance();
 	}
 	
 	public static void main(String[] args){
@@ -132,7 +135,7 @@ public class Session implements InternMan {
             sb.append(charset.charAt(pos));
         }
         Employer e = new EmployerImpl(name, emailAddress, sb.toString());
-		userDatabase.addEmployer(e);
+		admin.registerNewEmployer(e.getName(), e.getEmailAddress());
 		return e;
 	}
 
