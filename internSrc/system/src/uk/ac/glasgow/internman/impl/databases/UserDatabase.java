@@ -145,8 +145,9 @@ public class UserDatabase implements AdminDutiesInterface,
 				return false;
 			}
 		} else {
-			System.out.println("Having to create database, okay on first run.");
-			cc = new CourseCoordinatorImpl("test", "letmein");
+			System.out
+					.println("Creating course coordinator database, okay on first run.");
+			cc = new CourseCoordinatorImpl("tws", "1234");
 			ObjectOutputStream oos = null;
 			try {
 				ccDatabase = new File(ccDatabaseLocation);
@@ -195,7 +196,7 @@ public class UserDatabase implements AdminDutiesInterface,
 				return false;
 			}
 		} else {
-			System.out.println("Having to create database, okay on first run.");
+			System.out.println("Creating student database, okay on first run.");
 			students = new HashMap<String, Student>();
 			ObjectOutputStream oos = null;
 			try {
@@ -299,7 +300,8 @@ public class UserDatabase implements AdminDutiesInterface,
 				return false;
 			}
 		} else {
-			System.out.println("Having to create database, okay on first run.");
+			System.out
+					.println("Creating employer database, okay on first run.");
 			employers = new HashMap<String, Employer>();
 			ObjectOutputStream oos = null;
 			try {
