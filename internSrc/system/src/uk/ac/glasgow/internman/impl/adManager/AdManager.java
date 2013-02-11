@@ -62,8 +62,9 @@ public class AdManager implements AdManagerInterface {
 	}
 
 	@Override
-	public void publishAdvertisement(Integer adIndex) {
-		Advertisement temp = adverts.get(adIndex);		
+	public void publishAdvertisement(Integer adIndex, String comment) {
+		Advertisement temp = adverts.get(adIndex);
+		/* do we store comments? */
 		temp.PublishAd();		
 		updateAdvertDatabase();
 		
