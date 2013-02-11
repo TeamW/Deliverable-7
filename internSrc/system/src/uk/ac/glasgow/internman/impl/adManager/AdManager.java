@@ -23,7 +23,7 @@ public class AdManager implements AdManagerInterface {
 	private HashMap<Integer, Advertisement> adverts;
 	private Integer maxAdvertId;
 
-	public AdManager() {
+	private AdManager() {
 		advertDatabaseLoaded = loadAdvertDatabase();
 		maxAdvertId = getMaxAdvertId();
 	}
@@ -46,8 +46,7 @@ public class AdManager implements AdManagerInterface {
 	@Override
 	public Advertisement selectAdvertisement(Integer index) {
 		return adverts.get(index);
-		
-		
+
 	}
 
 	@Override
@@ -65,10 +64,9 @@ public class AdManager implements AdManagerInterface {
 	public void publishAdvertisement(Integer adIndex, String comment) {
 		Advertisement temp = adverts.get(adIndex);
 		/* do we store comments? */
-		temp.PublishAd();		
+		temp.PublishAd();
 		updateAdvertDatabase();
-		
-		
+
 	}
 
 	@SuppressWarnings("unchecked")

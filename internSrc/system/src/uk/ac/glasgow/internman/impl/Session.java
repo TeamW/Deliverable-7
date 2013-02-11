@@ -29,7 +29,7 @@ public class Session implements InternMan {
 
 	public Session() {
 		login = new LoginImpl();
-		adManager = new AdManager();
+		adManager = AdManager.getInstance();
 		admin = Admin.getInstance();
 	}
 
