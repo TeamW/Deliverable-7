@@ -126,7 +126,10 @@ public class Session implements InternMan {
 
 	@Override
 	public Advertisement createNewAdvertisement(String applicationDetails) {
-		return adManager.createNewAdvertisement((Employer) currentUser, applicationDetails);
+		if(currentUser instanceof CourseCoordinator || 
+		   currentUser instanceof Employer)
+			return adManager.createNewAdvertisement((Employer) currentUser, applicationDetails);
+		return null;
 	}
 
 	@Override
