@@ -111,7 +111,7 @@ public class Session implements InternMan {
 	@Override
 	public Map<String, Student> getStudents() {
 		//no method for this yet?
-		return null;
+		return admin.getStudents();
 	}
 
 	@Override
