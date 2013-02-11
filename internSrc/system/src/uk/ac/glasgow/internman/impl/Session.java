@@ -2,8 +2,8 @@ package uk.ac.glasgow.internman.impl;
 
 import java.util.Date;
 import java.util.HashMap;
-import java.util.Iterator;
 import java.util.Map;
+import java.util.Map.Entry;
 
 import uk.ac.glasgow.clui.*;
 import uk.ac.glasgow.internman.*;
@@ -96,35 +96,26 @@ public class Session implements InternMan {
 
 	@Override
 	public Map<Integer, Advertisement> getAdvertisements() {
-		if (currentUser instanceof CourseCoordinator)
+		if (currentUser instanceof CourseCoordinator) {
 			return adManager.getAdvertisements();
-		if (currentUser instanceof Employer)
-		{
-			//return a new map of only the employers ads.
-			//(Gordon you probably wanna look over this,
-			//I don't have much experience using hmaps in java)
+		}
+		if (currentUser instanceof Employer) {
 			Map<Integer, Advertisement> returnMap = new HashMap<Integer, Advertisement>();
-			Iterator it = adManager.getAdvertisements().entrySet().iterator();
-			while (it.hasNext())
-			{
-				Map.Entry me = (Map.Entry)it.next();
-				Advertisement temp = (Advertisement)me.getValue();
-				if (currentUser == temp.getEmployer())
-					returnMap.put((Integer)me.getKey(), (Advertisement)me.getValue());
+			for (Entry<Integer, Advertisement> a : returnMap.entrySet()) {
+				if (currentUser == a.getValue().getEmployer()) {
+					returnMap.put((Integer) a.getKey(),
+							(Advertisement) a.getValue());
+				}
 			}
 			return returnMap;
 		}
-		if (currentUser instanceof Student)
-		{
-			//return a new map of only published ads
+		if (currentUser instanceof Student) {
 			Map<Integer, Advertisement> returnMap = new HashMap<Integer, Advertisement>();
-			Iterator it = adManager.getAdvertisements().entrySet().iterator();
-			while (it.hasNext())
-			{
-				Map.Entry me = (Map.Entry)it.next();
-				Advertisement temp = (Advertisement)me.getValue();
-				if (temp.getStatus() == Advertisement.AdvertisementStatus.PUBLISHED)
-					returnMap.put((Integer)me.getKey(), (Advertisement)me.getValue());
+			for (Entry<Integer, Advertisement> a : returnMap.entrySet()) {
+				if (a.getValue().getStatus() == Advertisement.AdvertisementStatus.PUBLISHED) {
+					returnMap.put((Integer) a.getKey(),
+							(Advertisement) a.getValue());
+				}
 			}
 			return returnMap;
 		}
