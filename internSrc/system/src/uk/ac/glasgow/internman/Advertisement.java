@@ -1,9 +1,10 @@
 package uk.ac.glasgow.internman;
 
+import java.io.Serializable;
 import java.util.Date;
 import java.util.Map;
 
-public interface Advertisement {
+public interface Advertisement extends Serializable {
 
 	public enum AdvertisementStatus {
 		PENDING, PUBLISHED
