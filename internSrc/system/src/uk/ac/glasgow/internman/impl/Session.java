@@ -15,7 +15,6 @@ import uk.ac.glasgow.internman.users.User;
 import uk.ac.glasgow.internman.ui.*;
 import uk.ac.glasgow.internman.impl.adManager.AdManager;
 import uk.ac.glasgow.internman.impl.admin.Admin;
-import uk.ac.glasgow.internman.impl.databases.UserDatabase;
 import uk.ac.glasgow.internman.impl.login.LoginImpl;;
 
 
