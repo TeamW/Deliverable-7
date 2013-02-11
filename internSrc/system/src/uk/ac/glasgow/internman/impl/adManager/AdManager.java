@@ -4,10 +4,13 @@ import java.util.Map;
 
 import uk.ac.glasgow.internman.Advertisement;
 import uk.ac.glasgow.internman.Employer;
+import uk.ac.glasgow.internman.impl.AdvertisementImpl;
 
 public class AdManager implements AdManagerInterface {
 
 	public static final AdManager AM = new AdManager();
+	
+	
 	
 	public AdManager() {
 		// TODO Auto-generated constructor stub
@@ -18,20 +21,28 @@ public class AdManager implements AdManagerInterface {
 	}
 	
 	@Override
-	public Advertisement createNewAdvertisement(Employer e, String applicationDetails) {
-		// TODO Auto-generated method stub
-		return null;
+	public Advertisement createNewAdvertisement(Employer e, String applicationDetails) {		
+		
+		// create naw add . .
+		 return null;
+		  
+		  //add to hash map 
+		 
+		 //update data base 
+		
+	
 	}
 
 	@Override
 	public Advertisement selectAdvertisement(Integer index) {
-		// TODO Auto-generated method stub
-		return null;
+		
+		
+		return AM.selectAdvertisement(index);
 	}
 
 	@Override
 	public void reviseAdvertisement(Integer index, Advertisement revise) {
-		// TODO Auto-generated method stub
+		AM.reviseAdvertisement(index, revise);
 
 	}
 
