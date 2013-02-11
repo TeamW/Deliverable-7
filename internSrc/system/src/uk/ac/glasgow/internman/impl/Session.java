@@ -169,6 +169,7 @@ public class Session implements InternMan {
 
 	@Override
 	public Employer getCurrentEmployer() {
+		//Method makes no sense, remnant of earlier code? Ignored.
 		return null;
 	}
 
