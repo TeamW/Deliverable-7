@@ -118,7 +118,10 @@ public class Session implements InternMan {
 	@Override
 	public Employer registerNewEmployer(String name, String emailAddress) {
 		//DOES NOT CHECK THAT EMPLOYER ALREADY REGISTERED
-		return admin.registerNewEmployer(name, emailAddress);
+		if(currentUser instanceof CourseCoordinator || 
+		   currentUser instanceof Employer)
+			return admin.registerNewEmployer(name, emailAddress);
+		return null;
 	}
 
 	@Override
