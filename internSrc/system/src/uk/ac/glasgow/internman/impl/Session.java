@@ -148,7 +148,16 @@ public class Session implements InternMan {
 
 	@Override
 	public Advertisement selectAdvertisement(Integer index) {
-		return adManager.selectAdvertisement(index);
+		Advertisement ad = adManager.selectAdvertisement(index);
+		if (currentUser instanceof CourseCoordinator)
+			return ad;
+		if (currentUser instanceof Student && 
+				ad.getStatus() == Advertisement.AdvertisementStatus.PUBLISHED)
+			return ad;
+		else if(currentUser instanceof Employer &&
+				currentUser == ad.getEmployer())
+			return ad;
+		return null;
 	}
 
 	@Override
