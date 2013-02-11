@@ -37,7 +37,7 @@ public class UserDatabase implements AdminDutiesInterface,
 	public static void main(String[] args) {
 		getInstance();
 	}
-	
+
 	private UserDatabase() {
 		studentDatabaseLoaded = loadStudentDatabase();
 		employerDatabaseLoaded = loadEmployerDatabase();
