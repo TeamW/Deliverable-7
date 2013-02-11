@@ -28,19 +28,23 @@ public class UserDatabase implements AdminDutiesInterface,
 
 	private boolean ccDatabaseLoaded;
 	private static final String ccDatabaseLocation = System
-			.getProperty("user.dir") + "/employer.database";
+			.getProperty("user.dir") + "/cc.database";
 	private File ccDatabase;
 	private CourseCoordinator cc;
 
 	private static final UserDatabase userDatabase = new UserDatabase();
 
+	public static void main(String[] args) {
+		getInstance();
+	}
+	
 	private UserDatabase() {
 		studentDatabaseLoaded = loadStudentDatabase();
 		employerDatabaseLoaded = loadEmployerDatabase();
 		ccDatabaseLoaded = loadCCDatabase();
 	}
 
-	public UserDatabase getInstance() {
+	public static UserDatabase getInstance() {
 		return userDatabase;
 	}
 
@@ -71,17 +75,15 @@ public class UserDatabase implements AdminDutiesInterface,
 	}
 
 	@Override
-	public boolean addEmployer(String employerName, String employerEmail,
-			String password) {
+	public boolean addEmployer(Employer e) {
 		if (!employerDatabaseLoaded) {
 			employerDatabaseLoaded = loadEmployerDatabase();
 		}
-		if (employers.get(employerName) != null) {
+		if (employers.get(e.getName()) != null) {
 			System.out.println("Employer already exists.");
 			return false;
 		}
-		Employer newEmployer = new EmployerImpl(employerName, employerEmail);
-		employers.put(employerName, newEmployer);
+		employers.put(e.getName(), e);
 		updateEmployerDatabase();
 		return true;
 	}
@@ -102,6 +104,10 @@ public class UserDatabase implements AdminDutiesInterface,
 		return students.get(guid);
 	}
 
+	public CourseCoordinator getCourseCoordinator() {
+		return cc;
+	}
+
 	@Override
 	public void updateStudent(Student student) {
 		if (!studentDatabaseLoaded) {
@@ -115,6 +121,12 @@ public class UserDatabase implements AdminDutiesInterface,
 			temp = student;
 		}
 		updateStudentDatabase();
+	}
+
+	@Override
+	public void changeCourseCoordinator(String username, String password) {
+		cc = new CourseCoordinatorImpl(username, password);
+		updateCCDatabase();
 	}
 
 	private boolean loadCCDatabase() {
@@ -230,6 +242,33 @@ public class UserDatabase implements AdminDutiesInterface,
 		}
 		try {
 			oos.writeObject(students);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		try {
+			oos.close();
+		} catch (Exception e) {
+			e.printStackTrace();
+			return false;
+		}
+		return true;
+	}
+
+	private boolean updateCCDatabase() {
+		if (!ccDatabaseLoaded) {
+			return false;
+		}
+		ObjectOutputStream oos = null;
+		try {
+			ccDatabase = new File(ccDatabaseLocation);
+			FileOutputStream fos = new FileOutputStream(ccDatabase);
+			oos = new ObjectOutputStream(fos);
+		} catch (Exception e) {
+			e.printStackTrace();
+			return false;
+		}
+		try {
+			oos.writeObject(cc);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
