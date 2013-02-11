@@ -90,6 +90,7 @@ public class Session implements InternMan {
 
 	@Override
 	public boolean login(String userName, String password) {
+		//if the user is already logged in just return true
 		if(!login.userLoggedIn(userName))
 			if(login.verifyUser(userName, password))
 			{
@@ -142,7 +143,7 @@ public class Session implements InternMan {
 
 	@Override
 	public Student selectStudent(String matriculation) {
-		return userDatabase.getStudent(matriculation);
+		return admin.selectStudent(matriculation);
 	}
 
 	@Override
