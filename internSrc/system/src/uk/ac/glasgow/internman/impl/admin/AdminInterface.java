@@ -17,7 +17,7 @@ public interface AdminInterface {
 	
 void publishAdvertisement(int advertisementIndex, String comment);
 	
-	boolean registerNewEmployer(String name, String email);
+	Employer registerNewEmployer(String name, String email);
 	
 	void approveOffer(String matriculation);
 	
