@@ -176,7 +176,9 @@ public class Session implements InternMan {
 
 	@Override
 	public Student selectStudent(String matriculation) {
-		return admin.selectStudent(matriculation);
+		if (currentUser instanceof CourseCoordinator)
+			return admin.selectStudent(matriculation);
+		return null;
 	}
 
 	@Override
