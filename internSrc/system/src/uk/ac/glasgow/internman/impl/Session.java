@@ -173,7 +173,8 @@ public class Session implements InternMan {
 
 	@Override
 	public void publishAdvertisement(Integer advertisementIndex, String comment) {
-		adManager.publishAdvertisement(advertisementIndex, comment);
+		if (currentUser instanceof CourseCoordinator)
+			adManager.publishAdvertisement(advertisementIndex, comment);
 	}
 
 	@Override
