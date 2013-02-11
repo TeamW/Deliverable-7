@@ -1,9 +1,11 @@
 package uk.ac.glasgow.internman.impl.login;
 
+import uk.ac.glasgow.internman.users.User;
+
 public interface Login {
 
-	public boolean verifyUser(String id, String password);
+	//return user type - cast to user type dont return boolean
+	public User verifyUser(String id, String password);
 	
-	public boolean userLoggedIn(String id);
-	
+
 }

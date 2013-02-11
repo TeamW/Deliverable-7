@@ -9,8 +9,8 @@ import uk.ac.glasgow.clui.SystemDialogue;
 import uk.ac.glasgow.internman.InternMan;
 
 @MinimumArguments(2)
-@CommandDescription("")
-@ArgumentsDescription("")
+@CommandDescription(" Requests User Login & Password . Gives user access to the system ")
+@ArgumentsDescription("<User Id >, <Password>")
 public class LoginCommand extends SystemCommand<InternMan> {
 
         public LoginCommand(InternMan facade, SystemDialogue dialogue) {
@@ -26,6 +26,7 @@ public class LoginCommand extends SystemCommand<InternMan> {
 		boolean result = facade.login(userName,password);
 		
 		if (result) dialogue.sendMessage("User ["+userName+"] now the current user.");
+		
 		else dialogue.sendMessage("Invalid username or password");
 	}
 }
