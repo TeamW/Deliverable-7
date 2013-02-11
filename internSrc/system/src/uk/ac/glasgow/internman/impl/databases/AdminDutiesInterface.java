@@ -1,5 +1,7 @@
 package uk.ac.glasgow.internman.impl.databases;
 
+import java.util.Map;
+
 import uk.ac.glasgow.internman.*;
 
 public interface AdminDutiesInterface {
@@ -26,6 +28,8 @@ public interface AdminDutiesInterface {
 	public Employer getEmployer(String username);
 
 	public Student getStudent(String username);
+	
+	public Map<String, Student> getStudents();
 
 	public CourseCoordinator getCourseCoordinator();
 

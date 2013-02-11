@@ -7,6 +7,7 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.util.HashMap;
+import java.util.Map;
 
 import uk.ac.glasgow.internman.*;
 import uk.ac.glasgow.internman.impl.*;
@@ -73,6 +74,14 @@ public class UserDatabase implements AdminDutiesInterface,
 		}
 		return (cc == null) ? false : cc.getUsername().equals(username)
 				&& cc.authenticate(password);
+	}
+	
+	@Override
+	public Map<String, Student> getStudents() {
+		if (!studentDatabaseLoaded) {
+			studentDatabaseLoaded = loadStudentDatabase();
+		}
+		return students;
 	}
 
 	@Override
