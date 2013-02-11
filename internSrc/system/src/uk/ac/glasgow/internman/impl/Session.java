@@ -180,6 +180,7 @@ public class Session implements InternMan {
 	@Override
 	public void notifyAcceptedOffer(Role role, String managerName,
 			String managerEmail) {
+		if (currentUser instanceof Student)
 		System.out
 				.println("Notified course coordinator of acceptance of role: "
 						+ role.getTitle() + " offered by " + managerName + " "
@@ -188,7 +189,8 @@ public class Session implements InternMan {
 
 	@Override
 	public void approveAcceptedOffer(String matriculation) {
-		admin.approveOffer(matriculation);
+		if (currentUser instanceof CourseCoordinator)
+			admin.approveOffer(matriculation);
 	}
 
 	@Override
