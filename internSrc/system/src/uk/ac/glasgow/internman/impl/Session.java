@@ -4,6 +4,7 @@ import java.util.Date;
 import java.util.Map;
 import java.util.Random;
 
+import uk.ac.glasgow.clui.SystemCommand;
 import uk.ac.glasgow.clui.SystemDialogue;
 import uk.ac.glasgow.internman.Advertisement;
 import uk.ac.glasgow.internman.Employer;
@@ -12,7 +13,7 @@ import uk.ac.glasgow.internman.Role;
 import uk.ac.glasgow.internman.Student;
 import uk.ac.glasgow.internman.UoGGrade;
 import uk.ac.glasgow.internman.users.User;
-import uk.ac.glasgow.internman.ui.InternManCLUI;
+import uk.ac.glasgow.internman.ui.*;
 import uk.ac.glasgow.internman.impl.adManager.AdManager;
 import uk.ac.glasgow.internman.impl.databases.UserDatabase;
 import uk.ac.glasgow.internman.impl.login.LoginImpl;;
@@ -41,7 +42,48 @@ public class Session implements InternMan {
 		SystemDialogue dialogue = new SystemDialogue(System.in, System.out, System.err);
 
 		InternManCLUI userInterface = new InternManCLUI(facade,dialogue);
+		addCommands(facade, dialogue, userInterface);
 		userInterface.run();
+	}
+	
+	private static void addCommands(InternMan facade, SystemDialogue dialogue, InternManCLUI userInterface)
+	{
+		SystemCommand<InternMan> showAdvertisementSummary
+		=  new ViewAdvertisementSummaryCommand(facade,dialogue);
+	
+		userInterface.addSystemCommand(
+			"ShowAdvertisementSummary", showAdvertisementSummary);
+
+		userInterface.addSystemCommand(
+	    "Login", new LoginCommand(facade,dialogue));
+
+		userInterface.addSystemCommand(
+	    "RegisterEmployer", new RegisterEmployerCommand(facade,dialogue));
+	
+	 	userInterface.addSystemCommand(
+	 		"SubmitAdvertisement", new SubmitAdvertisementCommand(facade,dialogue));
+
+	 	userInterface.addSystemCommand(
+	 		"PublishAdvertisement", new PublishAdvertisementCommand(facade,dialogue));
+
+	
+	 	userInterface.addSystemCommand(
+	 		"ViewAdvertisementDetail", new ViewAdvertisementDetailCommand(facade,dialogue));
+
+	 	userInterface.addSystemCommand(
+	 		"ViewStudentDetail", new ViewStudentDetailCommand(facade,dialogue));
+	
+	 	userInterface.addSystemCommand(
+	 		"AcceptOffer", new AcceptOfferCommand(facade,dialogue));
+	
+	 	userInterface.addSystemCommand(
+	 		"ApproveOffer", new ApproveOfferCommand(facade,dialogue));
+	
+	 	userInterface.addSystemCommand(
+	 		"AssignVisitor", new AssignAcademicVisitorCommand(facade,dialogue));
+	
+	 	userInterface.addSystemCommand(
+	 		"RecordVisitAssessment", new RecordVisitAssessmentCommand(facade,dialogue));
 	}
 
 	@Override
