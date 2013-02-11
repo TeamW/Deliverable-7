@@ -159,6 +159,7 @@ public class Session implements InternMan {
 
 	@Override
 	public void approveAcceptedOffer(String matriculation) {
+		admin.approveOffer(matriculation);
 	}
 
 	@Override
