@@ -15,13 +15,13 @@ import uk.ac.glasgow.internman.impl.AdvertisementImpl;
 
 public class AdManager implements AdManagerInterface {
 
-	public static final AdManager AM = new AdManager();
 	private boolean advertDatabaseLoaded;
 	private static final String advertDatabaseLocation = System
 			.getProperty("user.dir") + "/advert.database";
 	private File advertDatabase;
 	private HashMap<Integer, Advertisement> adverts;
 	private Integer maxAdvertId;
+	public static final AdManager AM = new AdManager();
 
 	private AdManager() {
 		advertDatabaseLoaded = loadAdvertDatabase();
