@@ -49,29 +49,30 @@ public class UserDatabase implements AdminDutiesInterface,
 	}
 
 	@Override
-	public boolean loginStudent(String guid, String password) {
+	public boolean loginStudent(String username, String password) {
 		if (!studentDatabaseLoaded) {
 			studentDatabaseLoaded = loadStudentDatabase();
 		}
-		Student student = students.get(guid);
+		Student student = students.get(username);
 		return (student == null) ? false : student.authenticate(password);
 	}
 
 	@Override
-	public boolean loginEmployer(String name, String password) {
+	public boolean loginEmployer(String username, String password) {
 		if (!employerDatabaseLoaded) {
 			employerDatabaseLoaded = loadEmployerDatabase();
 		}
-		Employer employer = employers.get(name);
+		Employer employer = employers.get(username);
 		return (employer == null) ? false : employer.authenticate(password);
 	}
 
 	@Override
-	public boolean loginCourseCoordinator(String name, String password) {
+	public boolean loginCourseCoordinator(String username, String password) {
 		if (!ccDatabaseLoaded) {
 			ccDatabaseLoaded = loadCCDatabase();
 		}
-		return (cc == null) ? false : cc.authenticate(password);
+		return (cc == null) ? false : cc.getUsername().equals(username)
+				&& cc.authenticate(password);
 	}
 
 	@Override
@@ -79,29 +80,29 @@ public class UserDatabase implements AdminDutiesInterface,
 		if (!employerDatabaseLoaded) {
 			employerDatabaseLoaded = loadEmployerDatabase();
 		}
-		if (employers.get(e.getName()) != null) {
+		if (employers.get(e.getUsername()) != null) {
 			System.out.println("Employer already exists.");
 			return false;
 		}
-		employers.put(e.getName(), e);
+		employers.put(e.getUsername(), e);
 		updateEmployerDatabase();
 		return true;
 	}
 
 	@Override
-	public Employer getEmployer(String employerName) {
+	public Employer getEmployer(String username) {
 		if (!employerDatabaseLoaded) {
 			employerDatabaseLoaded = loadEmployerDatabase();
 		}
-		return employers.get(employerName);
+		return employers.get(username);
 	}
 
 	@Override
-	public Student getStudent(String guid) {
+	public Student getStudent(String username) {
 		if (!studentDatabaseLoaded) {
 			studentDatabaseLoaded = loadStudentDatabase();
 		}
-		return students.get(guid);
+		return students.get(username);
 	}
 
 	public CourseCoordinator getCourseCoordinator() {
@@ -116,7 +117,7 @@ public class UserDatabase implements AdminDutiesInterface,
 		Student temp = students.get(student.getMatriculation());
 		if (temp == null) {
 			System.out.println("Student didn't exist in database, adding now.");
-			students.put(student.getMatriculation(), student);
+			students.put(student.getUsername(), student);
 		} else {
 			temp = student;
 		}
