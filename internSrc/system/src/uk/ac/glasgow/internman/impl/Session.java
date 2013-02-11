@@ -30,7 +30,6 @@ public class Session implements InternMan {
 	private User currentUser;
 	private AdManager adManager;
 	private Admin admin;
-	private UserDatabase userDatabase;
 	
 	public Session() {
 		login = new LoginImpl();
