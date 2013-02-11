@@ -28,6 +28,13 @@ public class AdvertisementImpl implements Advertisement {
 		return roles;
 	}
 
+	public void PublishAd(){
+		this.status = AdvertisementStatus.PUBLISHED;
+		
+	}
+	
+	
+	
 	@Override
 	public Employer getEmployer() {
 		return employer;

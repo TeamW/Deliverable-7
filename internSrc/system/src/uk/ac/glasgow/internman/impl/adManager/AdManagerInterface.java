@@ -18,6 +18,6 @@ public interface AdManagerInterface {
 	
 	public Map<Integer, Advertisement> getAdvertisements();
 	
-	public void publishAdvertisement(Integer adIndex, String comment);
+	public void publishAdvertisement(Integer adIndex);
 
 }

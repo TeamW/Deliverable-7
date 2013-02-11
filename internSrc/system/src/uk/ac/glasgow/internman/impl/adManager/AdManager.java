@@ -45,26 +45,29 @@ public class AdManager implements AdManagerInterface {
 
 	@Override
 	public Advertisement selectAdvertisement(Integer index) {
-
-		return AM.selectAdvertisement(index);
+		return adverts.get(index);
+		
+		
 	}
 
 	@Override
 	public void reviseAdvertisement(Integer index, Advertisement revise) {
-		AM.reviseAdvertisement(index, revise);
+		adverts.put(index, revise);
 
 	}
 
 	@Override
 	public Map<Integer, Advertisement> getAdvertisements() {
-		// TODO Auto-generated method stub
-		return null;
+		return adverts;
 	}
 
 	@Override
-	public void publishAdvertisement(Integer adIndex, String comment) {
-		// TODO Auto-generated method stub
-
+	public void publishAdvertisement(Integer adIndex) {
+		Advertisement temp = adverts.get(adIndex);		
+		temp.PublishAd();		
+		updateAdvertDatabase();
+		
+		
 	}
 
 	@SuppressWarnings("unchecked")
