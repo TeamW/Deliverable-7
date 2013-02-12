@@ -9,6 +9,8 @@ public interface Student {
 	}
 
 	Internship getInternship();
+	
+	void setInternship(Internship i);
 
 	String getSurname();
 

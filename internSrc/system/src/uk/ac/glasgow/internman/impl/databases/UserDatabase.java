@@ -75,7 +75,7 @@ public class UserDatabase implements AdminDutiesInterface,
 		return (cc == null) ? false : cc.getUsername().equals(username)
 				&& cc.authenticate(password);
 	}
-	
+
 	@Override
 	public Map<String, Student> getStudents() {
 		if (!studentDatabaseLoaded) {

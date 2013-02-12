@@ -1,10 +1,12 @@
 package uk.ac.glasgow.internman.impl;
 
+import java.io.Serializable;
+
 import uk.ac.glasgow.internman.Internship;
 import uk.ac.glasgow.internman.Student;
 import uk.ac.glasgow.internman.users.User;
 
-public class StudentImpl extends User implements Student {
+public class StudentImpl extends User implements Student, Serializable {
 
 	private static final long serialVersionUID = 1L;
 	private String forename;
@@ -28,6 +30,10 @@ public class StudentImpl extends User implements Student {
 	@Override
 	public Internship getInternship() {
 		return internship;
+	}
+	
+	public void setInternship(Internship i) {
+		internship = i;
 	}
 
 	@Override

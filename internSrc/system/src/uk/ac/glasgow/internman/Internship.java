@@ -24,4 +24,6 @@ public interface Internship {
 	
 	void setVisit(Visit v);
 
+	void accept();
+
 }

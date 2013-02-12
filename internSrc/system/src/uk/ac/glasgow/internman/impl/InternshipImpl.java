@@ -1,11 +1,13 @@
 package uk.ac.glasgow.internman.impl;
 
+import java.io.Serializable;
+
 import uk.ac.glasgow.internman.Employer;
 import uk.ac.glasgow.internman.Internship;
 import uk.ac.glasgow.internman.Role;
 import uk.ac.glasgow.internman.Visit;
 
-public class InternshipImpl implements Internship {
+public class InternshipImpl implements Internship, Serializable {
 
 	private String manager;
 	private String managerEmail;
@@ -68,6 +70,11 @@ public class InternshipImpl implements Internship {
 	@Override
 	public void approve(){
 		this.status = InternshipStatus.APPROVED;
+	}
+	
+	@Override
+	public void accept(){
+		this.status = InternshipStatus.ACCEPTED;
 	}
 	
 	@Override
