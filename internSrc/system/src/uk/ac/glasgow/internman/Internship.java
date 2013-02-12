@@ -3,7 +3,7 @@ package uk.ac.glasgow.internman;
 public interface Internship {
 
 	public enum InternshipStatus {
-		APPLYING, WITHDRAWN, ACCEPTED, APPROVED
+		PENDING, WITHDRAWN, ACCEPTED, APPROVED
 	}
 	
 	String getManager();

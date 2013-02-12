@@ -26,7 +26,7 @@ public class InternshipImpl implements Internship {
 		this.visitComplete = false;
 		this.employer = employer;
 		this.role = role;
-		this.status = InternshipStatus.APPLYING;
+		this.status = InternshipStatus.PENDING;
 		this.visit = null;
 	}
 
