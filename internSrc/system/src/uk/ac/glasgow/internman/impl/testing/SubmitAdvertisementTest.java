@@ -44,8 +44,7 @@ public class SubmitAdvertisementTest {
 	 */
 	
 	/**
-	 * The course coordinator tries to approve an internship of a student who
-	 * does not exist.
+	 * Submit a valid advert as an employer.
 	 */
 	@Test
 	public void submitValidAdAsEmployer() {
