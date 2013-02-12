@@ -1,10 +1,11 @@
 package uk.ac.glasgow.internman.impl;
 
+import java.io.Serializable;
 import java.util.Date;
 
 import uk.ac.glasgow.internman.Role;
 
-public class RoleImpl implements Role {
+public class RoleImpl implements Role, Serializable {
 
 	private String title;
 	private String location;
