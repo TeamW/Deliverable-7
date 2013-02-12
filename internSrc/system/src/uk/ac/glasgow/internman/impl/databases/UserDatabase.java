@@ -11,6 +11,7 @@ import java.util.Map;
 
 import uk.ac.glasgow.internman.*;
 import uk.ac.glasgow.internman.impl.*;
+import uk.ac.glasgow.internman.users.User;
 
 public class UserDatabase implements AdminDutiesInterface,
 		AuthenticateInterface {
@@ -55,7 +56,8 @@ public class UserDatabase implements AdminDutiesInterface,
 			studentDatabaseLoaded = loadStudentDatabase();
 		}
 		Student student = students.get(username);
-		return (student == null) ? false : student.authenticate(password);
+		User user = (User) student;
+		return (user == null) ? false : user.authenticate(password);
 	}
 
 	@Override
@@ -64,7 +66,8 @@ public class UserDatabase implements AdminDutiesInterface,
 			employerDatabaseLoaded = loadEmployerDatabase();
 		}
 		Employer employer = employers.get(username);
-		return (employer == null) ? false : employer.authenticate(password);
+		User user = (User) employer;
+		return (user == null) ? false : user.authenticate(password);
 	}
 
 	@Override
@@ -72,8 +75,8 @@ public class UserDatabase implements AdminDutiesInterface,
 		if (!ccDatabaseLoaded) {
 			ccDatabaseLoaded = loadCCDatabase();
 		}
-		return (cc == null) ? false : cc.getUsername().equals(username)
-				&& cc.authenticate(password);
+		User user = (User) cc;
+		return (user == null) ? false : user.authenticate(password);
 	}
 
 	@Override

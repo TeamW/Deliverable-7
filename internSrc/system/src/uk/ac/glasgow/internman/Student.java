@@ -9,7 +9,7 @@ public interface Student {
 	}
 
 	Internship getInternship();
-	
+
 	void setInternship(Internship i);
 
 	String getSurname();
@@ -23,6 +23,4 @@ public interface Student {
 	String getUsername();
 
 	Programme getProgramme();
-
-	boolean authenticate(String password);
 }

@@ -8,6 +8,4 @@ public interface Employer {
 	
 	String getUsername();
 
-	boolean authenticate(String password);
-
 }
