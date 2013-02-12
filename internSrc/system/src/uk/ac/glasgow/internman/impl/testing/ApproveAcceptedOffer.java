@@ -34,10 +34,6 @@ public class ApproveAcceptedOffer {
 		ub.addEmployer(e);
 		r = new RoleImpl("TeaMaker", "MyHouse", new Date(), new Date(),
 				"awesome job", 123912.12);
-		/*
-		 * String title, String location, Date start, Date end, String
-		 * description, Double salary
-		 */
 		student.setInternship(new InternshipImpl("john",
 				"john@someEmployer.com", e, r));
 		student.getInternship().accept();
@@ -55,7 +51,7 @@ public class ApproveAcceptedOffer {
 	 * offer that student 1002536r has accepted.
 	 */
 	@Test
-	public void test() {
+	public void approveValidInternship() {
 		s.login("TestCC", "letmein");
 		Student temp = s.selectStudent("1002536r");
 		s.approveAcceptedOffer("1002536r");
@@ -67,7 +63,7 @@ public class ApproveAcceptedOffer {
 	 * A student is logged in and tries to approve their own internship.
 	 */
 	@Test
-	public void notHappyDayTest() {
+	public void studentTriesToAcceptOwnInternship() {
 		s.login("1002536r", "letmein");
 		s.approveAcceptedOffer("1002536r");
 		s.login("TestCC", "letmein");
@@ -76,4 +72,15 @@ public class ApproveAcceptedOffer {
 		assertEquals(status, InternshipStatus.ACCEPTED);
 	}
 
+	/**
+	 * The course coordinator tries to approve an internship of a student who
+	 * does not exist.
+	 */
+	@Test
+	public void approveInternshipOfInvalidStudent() {
+		s.login("TestCC", "letmein");
+		s.approveAcceptedOffer("IDoNotExist");
+		// No crash test
+		assertEquals(true, true);
+	}
 }

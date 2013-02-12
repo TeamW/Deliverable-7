@@ -35,6 +35,11 @@ public class Admin implements AdminInterface {
 	@Override
 	public void approveOffer(String matriculation) {
 		Student stud = UD.getStudent(matriculation);
+		if (stud == null) {
+			System.err.println("Student with matriculation " + matriculation
+					+ " does not exist.");
+			return;
+		}
 		Internship intern = stud.getInternship();
 		intern.approve();
 	}
