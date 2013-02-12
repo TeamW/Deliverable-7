@@ -149,14 +149,14 @@ public class Session implements InternMan {
 	@Override
 	public Advertisement selectAdvertisement(Integer index) {
 		Advertisement ad = adManager.selectAdvertisement(index);
-		if (ad != null){
+		if (ad != null) {
 			if (currentUser instanceof CourseCoordinator)
 				return ad;
-			if (currentUser instanceof Student && 
-					ad.getStatus() == Advertisement.AdvertisementStatus.PUBLISHED)
+			if (currentUser instanceof Student
+					&& ad.getStatus() == Advertisement.AdvertisementStatus.PUBLISHED)
 				return ad;
-			else if(currentUser instanceof Employer &&
-					currentUser == ad.getEmployer())
+			else if (currentUser instanceof Employer
+					&& currentUser == ad.getEmployer())
 				return ad;
 		}
 		return null;
@@ -165,14 +165,14 @@ public class Session implements InternMan {
 	@Override
 	public Role selectRole(Integer advertisementIndex, Integer roleIndex) {
 		Advertisement ad = adManager.selectAdvertisement(advertisementIndex);
-		if(ad != null){
+		if (ad != null) {
 			if (currentUser instanceof CourseCoordinator)
 				return ad.getRoles().get(roleIndex);
-			if (currentUser instanceof Student && 
-					ad.getStatus() == Advertisement.AdvertisementStatus.PUBLISHED)
+			if (currentUser instanceof Student
+					&& ad.getStatus() == Advertisement.AdvertisementStatus.PUBLISHED)
 				return ad.getRoles().get(roleIndex);
-			else if(currentUser instanceof Employer &&
-					currentUser == ad.getEmployer())
+			else if (currentUser instanceof Employer
+					&& currentUser == ad.getEmployer())
 				return ad.getRoles().get(roleIndex);
 		}
 		return null;
@@ -195,10 +195,12 @@ public class Session implements InternMan {
 	public void notifyAcceptedOffer(Role role, String managerName,
 			String managerEmail) {
 		if (currentUser instanceof Student)
-		System.out
-				.println("Notified course coordinator of acceptance of role: "
-						+ role.getTitle() + " offered by " + managerName + " "
-						+ managerEmail);
+			System.out
+					.println("Notified course coordinator of acceptance of role: "
+							+ role.getTitle()
+							+ " offered by "
+							+ managerName
+							+ " " + managerEmail);
 	}
 
 	@Override
@@ -229,6 +231,13 @@ public class Session implements InternMan {
 	@Override
 	public Role createNewSelfSourcedRole(String title, String location,
 			Date start, Date end, String description, Double salary) {
+		if (currentUser instanceof Student) {
+			Student student = (Student) currentUser;
+			Role temp = new RoleImpl(title, location, start, end, description,
+					salary);
+			student.getInternship().setRole(temp);
+			return temp;
+		}
 		return null;
 	}
 }

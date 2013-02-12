@@ -26,4 +26,6 @@ public interface Internship {
 
 	void accept();
 
+	void setRole(Role temp);
+
 }

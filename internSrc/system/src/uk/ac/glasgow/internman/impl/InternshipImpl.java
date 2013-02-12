@@ -9,6 +9,7 @@ import uk.ac.glasgow.internman.Visit;
 
 public class InternshipImpl implements Internship, Serializable {
 
+	private static final long serialVersionUID = 1L;
 	private String manager;
 	private String managerEmail;
 	private boolean visitComplete;
@@ -66,20 +67,24 @@ public class InternshipImpl implements Internship, Serializable {
 	public Visit getVisit() {
 		return visit;
 	}
-	
+
 	@Override
-	public void approve(){
+	public void approve() {
 		this.status = InternshipStatus.APPROVED;
 	}
-	
+
 	@Override
-	public void accept(){
+	public void accept() {
 		this.status = InternshipStatus.ACCEPTED;
 	}
-	
+
 	@Override
-	public void setVisit(Visit v){
+	public void setVisit(Visit v) {
 		this.visit = v;
+	}
+
+	public void setRole(Role r) {
+		this.role = r;
 	}
 
 }
