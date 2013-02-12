@@ -48,6 +48,9 @@ public class ViewStudentDetail {
 	public void tearDown() throws Exception {
 	}
 
+	/**
+	 * Checks that the Course Coordinator can view an existing students details.
+	 */
 	@Test
 	public void ViewStudentDetailAsCC() {
 		s.login("TestCC", "letmein");
@@ -55,6 +58,27 @@ public class ViewStudentDetail {
 		assertEquals(stud.getEmail() + stud.getForename() + stud.getSurname()
 				+ stud.getUsername() + stud.getMatriculation(),
 				"example@example.comGordonReid1002536r1002536r");
+	}
+
+	/**
+	 * Test for checking that a Course Coordinator cannont view a student that
+	 * does not exist
+	 */
+	@Test
+	public void ViewNonExistentStudentDetailAsCC() {
+		s.login("TestCC", "letmein");
+		Student stud = s.selectStudent("1002253w");
+		assertEquals(stud, null);
+	}
+
+	/**
+	 * Checks that a company cannot view a student.
+	 */
+	@Test
+	public void ViewStudentDetailAsEmployer() {
+		s.login("someEmployer", "letmein");
+		Student stud = s.selectStudent("1002536r");
+		assertEquals(stud, null);
 	}
 
 }
