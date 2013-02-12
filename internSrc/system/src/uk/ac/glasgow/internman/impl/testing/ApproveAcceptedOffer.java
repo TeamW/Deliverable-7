@@ -45,12 +45,14 @@ public class ApproveAcceptedOffer {
 
 	@After
 	public void tearDown() throws Exception {
+		s.login("TestCC", "letmein");
+		Student temp = s.selectStudent("1002536r");
+		temp.getInternship().accept();
 	}
 
 	/**
 	 * User: TestCC with password: letmein is logged in. TestCC then approves an
-	 * offer that student 1002536r has accepted. Student is not persistently
-	 * updated to allow accurate test reruns.
+	 * offer that student 1002536r has accepted.
 	 */
 	@Test
 	public void test() {
@@ -59,6 +61,19 @@ public class ApproveAcceptedOffer {
 		s.approveAcceptedOffer("1002536r");
 		InternshipStatus status = temp.getInternship().getStatus();
 		assertEquals(status, InternshipStatus.APPROVED);
+	}
+
+	/**
+	 * A student is logged in and tries to approve their own internship.
+	 */
+	@Test
+	public void notHappyDayTest() {
+		s.login("1002536r", "letmein");
+		s.approveAcceptedOffer("1002536r");
+		s.login("TestCC", "letmein");
+		Student temp = s.selectStudent("1002536r");
+		InternshipStatus status = temp.getInternship().getStatus();
+		assertEquals(status, InternshipStatus.ACCEPTED);
 	}
 
 }
