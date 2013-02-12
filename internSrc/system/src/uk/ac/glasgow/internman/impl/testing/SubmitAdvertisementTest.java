@@ -8,7 +8,6 @@ import org.junit.Test;
 
 import uk.ac.glasgow.internman.Employer;
 import uk.ac.glasgow.internman.Role;
-import uk.ac.glasgow.internman.Student;
 import uk.ac.glasgow.internman.impl.AdvertisementImpl;
 import uk.ac.glasgow.internman.impl.EmployerImpl;
 import uk.ac.glasgow.internman.impl.Session;
