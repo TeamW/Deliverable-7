@@ -59,7 +59,8 @@ public class SubmitAdvertisementTest {
 			System.out.println(testAd.getApplicationDetails());
 			assertEquals(adString, testAd.getApplicationDetails());
 		}
-		System.out.println("Failed");
+		else
+			fail();
 	}
 
 }
