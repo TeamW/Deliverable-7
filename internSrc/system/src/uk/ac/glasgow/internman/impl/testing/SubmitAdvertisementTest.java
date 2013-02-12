@@ -51,13 +51,9 @@ public class SubmitAdvertisementTest {
 		// login as employer
 		s.login("someEmployer", "letmein");
 		s.createNewAdvertisement(adString);
-		AdvertisementImpl testAd = (AdvertisementImpl)s.selectAdvertisement(1);
-		if(testAd != null){
-			System.out.println(testAd.getApplicationDetails());
-			assertEquals(adString, testAd.getApplicationDetails());
-		}
-		else
-			fail();
+		AdvertisementImpl testAd = (AdvertisementImpl) s.createNewAdvertisement(adString);;
+		System.out.println(testAd.getApplicationDetails());
+		assertEquals(adString, testAd.getApplicationDetails());
 	}
 	
 	/**
