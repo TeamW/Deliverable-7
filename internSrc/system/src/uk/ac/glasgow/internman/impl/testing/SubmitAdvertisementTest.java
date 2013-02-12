@@ -39,8 +39,7 @@ public class SubmitAdvertisementTest {
 	/*
 	 * Tests - submit as employer,
 	 * submit as CC
-	 * submit with incorrect information as employer
-	 * submit with incorrect information as CC
+	 * submit ad as student
 	 */
 	
 	/**
@@ -59,6 +58,22 @@ public class SubmitAdvertisementTest {
 		}
 		else
 			fail();
+	}
+	
+	/**
+	 * Submit a valid advert as a Course Coordinator.
+	 */
+	@Test
+	public void submitValidAdAsCC() {
+
+	}
+	
+	/**
+	 * Submit a valid advert as a Student.
+	 */
+	@Test
+	public void submitValidAdAsStudent() {
+
 	}
 
 }
