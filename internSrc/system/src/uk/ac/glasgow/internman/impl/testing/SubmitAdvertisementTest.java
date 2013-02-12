@@ -8,9 +8,12 @@ import org.junit.Test;
 
 import uk.ac.glasgow.internman.Employer;
 import uk.ac.glasgow.internman.Role;
+import uk.ac.glasgow.internman.Student;
+import uk.ac.glasgow.internman.Student.Programme;
 import uk.ac.glasgow.internman.impl.AdvertisementImpl;
 import uk.ac.glasgow.internman.impl.EmployerImpl;
 import uk.ac.glasgow.internman.impl.Session;
+import uk.ac.glasgow.internman.impl.StudentImpl;
 import uk.ac.glasgow.internman.impl.adManager.AdManager;
 import uk.ac.glasgow.internman.impl.databases.UserDatabase;
 
@@ -19,6 +22,7 @@ public class SubmitAdvertisementTest {
 	Session s;
 	AdManager a;
 	Employer e;
+	Student student;
 	Role r;
 	UserDatabase ub;
 
@@ -29,6 +33,9 @@ public class SubmitAdvertisementTest {
 		ub.changeCourseCoordinator("TestCC", "letmein");
 		e = new EmployerImpl("someEmployer", "example@example.com", "letmein");
 		ub.addEmployer(e);
+		student = new StudentImpl("Gordon", "Reid", "example@example.com",
+				"1002536r", Programme.SE);
+		ub.updateStudent(student);
 	}
 
 	@After
@@ -62,7 +69,7 @@ public class SubmitAdvertisementTest {
 	@Test
 	public void submitValidAdAsCC() {
 		String adString = "This is a test advertisement";
-		// login as employer
+		// login as CC
 		s.login("TestCC", "letmein");
 		s.createNewAdvertisement(adString);
 		AdvertisementImpl testAd = (AdvertisementImpl) s.createNewAdvertisement(adString);;
@@ -75,7 +82,12 @@ public class SubmitAdvertisementTest {
 	 */
 	@Test
 	public void submitValidAdAsStudent() {
-
+		String adString = "This is a test advertisement";
+		// login as student
+		s.login("1002536r", "letmein");
+		s.createNewAdvertisement(adString);
+		AdvertisementImpl testAd = (AdvertisementImpl) s.createNewAdvertisement(adString);;
+		assertEquals(null, testAd);
 	}
 
 }
