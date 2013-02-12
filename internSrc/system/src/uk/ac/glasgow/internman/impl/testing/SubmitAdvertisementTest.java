@@ -61,7 +61,13 @@ public class SubmitAdvertisementTest {
 	 */
 	@Test
 	public void submitValidAdAsCC() {
-
+		String adString = "This is a test advertisement";
+		// login as employer
+		s.login("TestCC", "letmein");
+		s.createNewAdvertisement(adString);
+		AdvertisementImpl testAd = (AdvertisementImpl) s.createNewAdvertisement(adString);;
+		System.out.println(testAd.getApplicationDetails());
+		assertEquals(adString, testAd.getApplicationDetails());
 	}
 	
 	/**
