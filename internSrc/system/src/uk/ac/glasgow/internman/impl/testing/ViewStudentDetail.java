@@ -35,6 +35,8 @@ public class ViewStudentDetail {
 		student = new StudentImpl("Gordon", "Reid", "example@example.com",
 				"1002536r", Programme.SE);
 		ub.updateStudent(student);
+		student = new StudentImpl("Ryan", "Wells", "other@email.com", "1002253w", Programme.SE);
+		ub.updateStudent(student);
 		e = new EmployerImpl("someEmployer", "example@example.com", "letmein");
 		ub.addEmployer(e);
 		r = new RoleImpl("TeaMaker", "MyHouse", new Date(), new Date(),
@@ -67,7 +69,7 @@ public class ViewStudentDetail {
 	@Test
 	public void ViewNonExistentStudentDetailAsCC() {
 		s.login("TestCC", "letmein");
-		Student stud = s.selectStudent("1002253w");
+		Student stud = s.selectStudent("100000a");
 		assertEquals(stud, null);
 	}
 
@@ -80,5 +82,14 @@ public class ViewStudentDetail {
 		Student stud = s.selectStudent("1002536r");
 		assertEquals(stud, null);
 	}
-
+	
+	/**
+	 * Checks that a student cannot view a different student
+	 */
+	@Test
+	public void ViewStudentDetailAsStudent(){
+		s.login("1002536r","letmein");
+		Student stud = s.selectStudent("1002253w");
+		assertEquals(stud,null);
+	}
 }
