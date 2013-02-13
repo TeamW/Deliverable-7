@@ -358,6 +358,11 @@ public class InternManTeamW implements InternMan {
 			admin.recordVisitAssessment(matriculation, grade, description);
 	}
 
+	/**
+	 * Get the current Employer.
+	 * 
+	 * @return Employer if current user is an Employer, null otherwise.
+	 */
 	@Override
 	public Employer getCurrentEmployer() {
 		if (currentUser instanceof Employer) {
@@ -366,6 +371,24 @@ public class InternManTeamW implements InternMan {
 		return null;
 	}
 
+	/**
+	 * Allows Student to submit a role they found themselves.
+	 * 
+	 * @param title
+	 * 			Title of role.
+	 * @param location
+	 * 			Location of role.
+	 * @param start
+	 * 			Starting date.
+	 * @param end
+	 * 			Ending date.
+	 * @param description
+	 * 			Description of role.
+	 * @param salary
+	 * 			Salary offered by role.
+	 * 
+	 * @return The new Role created in the system, null if user isn't a Student.
+	 */
 	@Override
 	public Role createNewSelfSourcedRole(String title, String location,
 			Date start, Date end, String description, Double salary) {
