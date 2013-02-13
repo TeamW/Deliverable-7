@@ -74,8 +74,38 @@ public class ViewAdvertisementSummary {
 	public void ViewApprovedAdAsOtherCompany(){
 		s.login("CC", "letmein");
 		s.publishAdvertisement(1, "bloody good, ol' chap");
+		s.registerNewEmployer("OtherCompany", "Other@Company.com");
+		s.login("OtherCompany","letmein");
+		a = s.selectAdvertisement(1);
+		assertEquals(a,null);
+	}
+	
+	@Test
+	public void ViewPendingAdAsCC(){
+		s.login("CC", "letmein");
+		a = s.selectAdvertisement(1);
+		assertEquals(a.getApplicationDetails(),"APPLY FOR ME");
+	}
+	
+	@Test
+	public void ViewPendingAdAsStudent(){
+		s.login("1002253w","letmein");
+		a = s.selectAdvertisement(1);
+		assertEquals(a,null);
+	}
+	
+	@Test
+	public void ViewPendingAdAsOwnerCompany(){
+		s.login("Company", "letmein");
+		a = s.selectAdvertisement(1);
+		assertEquals(a.getApplicationDetails(),"APPLY FOR ME");
+	}
+	
+	@Test
+	public void ViewPendingAsAsOtherCompany(){
+		s.login("CC", "letmein");
 		e = new EmployerImpl("OtherCompany","big@company.com", "letmein");
-		ub.addEmployer(e);
+		s.registerNewEmployer("OtherCompany", "Other@Company.com");
 		s.login("OtherCompany","letmein");
 		a = s.selectAdvertisement(1);
 		assertEquals(a,null);
