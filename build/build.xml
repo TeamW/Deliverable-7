@@ -10,7 +10,7 @@
 	        <path refid="JUnit 4.libraryclasspath"/>
 	    </path>
 		<mkdir dir="../bin"/>
-		<javac srcdir="../internSrc/" destdir="../bin">
+		<javac srcdir="../src/" destdir="../bin">
 	        <classpath refid="Deliverable-7.classpath"/>
 		</javac>
 	</target>
