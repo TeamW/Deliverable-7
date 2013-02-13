@@ -2,6 +2,8 @@
 
 Execute build/build.xml with all targets in written order. Run will finally run the UI.
 
+If JUnit tests need to be run, the test suite is available from uk.ac.glasgow.internman.testing.AllTests
+
 === Contact information ===
 
 We can be contacted via the unofficial "Computing Science Level 3"
