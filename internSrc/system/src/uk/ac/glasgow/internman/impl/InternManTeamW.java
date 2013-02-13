@@ -327,12 +327,30 @@ public class InternManTeamW implements InternMan {
 			admin.approveOffer(matriculation);
 	}
 
+	/**
+	 * Allows Course Coordinator to assign an academic visitor.
+	 * 
+	 * @param matriculation
+	 * 			Matriculation number of Student as a String.
+	 * @param visitorName
+	 * 			Name of visitor.
+	 */
 	@Override
 	public void assignAcademicVisitor(String matriculation, String visitorName) {
 		if (currentUser instanceof CourseCoordinator)
 			admin.assignAcademicVisitor(matriculation, visitorName);
 	}
 
+	/**
+	 * Allows Course Coordinator to record the visit assessment.
+	 * 
+	 * @param matriculation
+	 * 			Matriculation number of Student as a String.
+	 * @param grade
+	 * 			Grade given.
+	 * @param description
+	 * 			Description of assessment.
+	 */
 	@Override
 	public void recordVisitAssessment(String matriculation, UoGGrade grade,
 			String description) {
