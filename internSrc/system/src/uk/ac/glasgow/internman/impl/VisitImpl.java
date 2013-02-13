@@ -30,15 +30,15 @@ public class VisitImpl implements Visit {
 	public String getDescription() {
 		return description;
 	}
-	
+
 	@Override
-	public void setUoGGrade(UoGGrade grade){
-		this.grade=grade;
+	public void setUoGGrade(UoGGrade grade) {
+		this.grade = grade;
 	}
-	
+
 	@Override
-	public void setDescription(String description){
-		this.description=description;
+	public void setDescription(String description) {
+		this.description = description;
 	}
 
 }

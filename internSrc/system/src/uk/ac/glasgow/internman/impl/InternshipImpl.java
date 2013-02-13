@@ -19,7 +19,6 @@ public class InternshipImpl implements Internship, Serializable {
 	private Visit visit;
 
 	public InternshipImpl() {
-
 	}
 
 	public InternshipImpl(String manager, String managerEmail,

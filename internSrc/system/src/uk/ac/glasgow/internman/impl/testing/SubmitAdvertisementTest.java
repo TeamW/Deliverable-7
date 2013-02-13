@@ -17,7 +17,7 @@ import uk.ac.glasgow.internman.impl.adManager.AdManager;
 import uk.ac.glasgow.internman.impl.databases.UserDatabase;
 
 public class SubmitAdvertisementTest {
-	
+
 	InternManTeamW s;
 	AdManager a;
 	Employer e;
@@ -41,13 +41,11 @@ public class SubmitAdvertisementTest {
 	public void tearDown() throws Exception {
 		a.removeAllAdverts();
 	}
-	
+
 	/*
-	 * Tests - submit as employer,
-	 * submit as CC
-	 * submit ad as student
+	 * Tests - submit as employer, submit as CC submit ad as student
 	 */
-	
+
 	/**
 	 * Submit a valid advert as an employer.
 	 */
@@ -57,11 +55,13 @@ public class SubmitAdvertisementTest {
 		// login as employer
 		s.login("someEmployer", "letmein");
 		s.createNewAdvertisement(adString);
-		AdvertisementImpl testAd = (AdvertisementImpl) s.createNewAdvertisement(adString);;
+		AdvertisementImpl testAd = (AdvertisementImpl) s
+				.createNewAdvertisement(adString);
+		;
 		System.out.println(testAd.getApplicationDetails());
 		assertEquals(adString, testAd.getApplicationDetails());
 	}
-	
+
 	/**
 	 * Submit a valid advert as a Course Coordinator.
 	 */
@@ -71,11 +71,13 @@ public class SubmitAdvertisementTest {
 		// login as CC
 		s.login("TestCC", "letmein");
 		s.createNewAdvertisement(adString);
-		AdvertisementImpl testAd = (AdvertisementImpl) s.createNewAdvertisement(adString);;
+		AdvertisementImpl testAd = (AdvertisementImpl) s
+				.createNewAdvertisement(adString);
+		;
 		System.out.println(testAd.getApplicationDetails());
 		assertEquals(adString, testAd.getApplicationDetails());
 	}
-	
+
 	/**
 	 * Submit a valid advert as a Student.
 	 */
@@ -85,7 +87,9 @@ public class SubmitAdvertisementTest {
 		// login as student
 		s.login("1002536r", "letmein");
 		s.createNewAdvertisement(adString);
-		AdvertisementImpl testAd = (AdvertisementImpl) s.createNewAdvertisement(adString);;
+		AdvertisementImpl testAd = (AdvertisementImpl) s
+				.createNewAdvertisement(adString);
+		;
 		assertEquals(null, testAd);
 	}
 

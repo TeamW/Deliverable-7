@@ -1,8 +1,6 @@
 package uk.ac.glasgow.internman.impl;
 
-import java.util.Date;
-import java.util.HashMap;
-import java.util.Map;
+import java.util.*;
 import java.util.Map.Entry;
 
 import uk.ac.glasgow.clui.*;
@@ -12,8 +10,6 @@ import uk.ac.glasgow.internman.ui.*;
 import uk.ac.glasgow.internman.impl.adManager.AdManager;
 import uk.ac.glasgow.internman.impl.admin.Admin;
 import uk.ac.glasgow.internman.impl.login.LoginImpl;
-
-;
 
 /**
  * InternManTeamW
@@ -140,8 +136,7 @@ public class InternManTeamW implements InternMan {
 	@Override
 	public Advertisement createNewAdvertisement(String applicationDetails) {
 		if (currentUser instanceof CourseCoordinator)
-			return adManager.createNewAdvertisement(null,
-					applicationDetails);
+			return adManager.createNewAdvertisement(null, applicationDetails);
 		else if (currentUser instanceof Employer)
 			return adManager.createNewAdvertisement((Employer) currentUser,
 					applicationDetails);

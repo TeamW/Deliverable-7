@@ -31,7 +31,7 @@ public class StudentImpl extends User implements Student, Serializable {
 	public Internship getInternship() {
 		return internship;
 	}
-	
+
 	public void setInternship(Internship i) {
 		internship = i;
 	}

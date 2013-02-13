@@ -17,13 +17,13 @@ import uk.ac.glasgow.internman.impl.adManager.AdManager;
 import uk.ac.glasgow.internman.impl.databases.UserDatabase;
 
 public class PublishAdvertisementTest {
-	
+
 	InternManTeamW s;
 	AdManager a;
 	Employer e;
 	Student student;
 	UserDatabase ub;
-	
+
 	@Before
 	public void setUp() throws Exception {
 		s = new InternManTeamW();
@@ -41,13 +41,11 @@ public class PublishAdvertisementTest {
 	public void tearDown() throws Exception {
 		a.removeAllAdverts();
 	}
-	
+
 	/*
-	 * Tests - submit as employer,
-	 * submit as CC
-	 * submit ad as student
+	 * Tests - submit as employer, submit as CC submit ad as student
 	 */
-	
+
 	/**
 	 * Submit a valid advert as a Course Coordinator.
 	 */
@@ -57,11 +55,10 @@ public class PublishAdvertisementTest {
 		// login as CC
 		s.login("TestCC", "letmein");
 		s.createNewAdvertisement(adString);
-		AdvertisementImpl testAd = (AdvertisementImpl) s.createNewAdvertisement(adString);
+		AdvertisementImpl testAd = (AdvertisementImpl) s
+				.createNewAdvertisement(adString);
 		System.out.println(testAd.getApplicationDetails());
 		assertEquals(adString, testAd.getApplicationDetails());
 	}
-	
-
 
 }

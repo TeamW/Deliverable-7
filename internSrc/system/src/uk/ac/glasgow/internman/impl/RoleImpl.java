@@ -7,6 +7,7 @@ import uk.ac.glasgow.internman.Role;
 
 public class RoleImpl implements Role, Serializable {
 
+	private static final long serialVersionUID = 1L;
 	private String title;
 	private String location;
 	private Date start;
@@ -40,7 +41,7 @@ public class RoleImpl implements Role, Serializable {
 	public Date getEnd() {
 		return end;
 	}
-	
+
 	public String getDescription() {
 		return description;
 	}
