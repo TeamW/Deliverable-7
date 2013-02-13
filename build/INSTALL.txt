@@ -1,2 +1,14 @@
+Target name: compile
+Compiles every java file.
+
+Target name: jar
+Generates a jar file from the compiled classes.
+
+Target name: install
+Moves the jar to the root directory.
+
 Target name: javadoc
 This target creates the JavaDoc in the docs directory.
+
+Target name: run
+Runs the generated jar

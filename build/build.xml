@@ -2,8 +2,18 @@
 	<property environment="env"/>
 	<!-- Build classes -->
 	<target name="compile">
+	    <path id="JUnit 4.libraryclasspath">
+	        <pathelement location="../../../../Applications/eclipse/plugins/org.junit_4.10.0.v4_10_0_v20120426-0900/junit.jar"/>
+	        <pathelement location="../../../../Applications/eclipse/plugins/org.hamcrest.core_1.1.0.v20090501071000.jar"/>
+	    </path>
+	    <path id="Deliverable-7.classpath">
+	        <pathelement location="bin"/>
+	        <path refid="JUnit 4.libraryclasspath"/>
+	    </path>
 		<mkdir dir="build/classes"/>
-		<javac srcdir="../internSrc/" destdir="build/classes"/>
+		<javac srcdir="../internSrc/" destdir="build/classes">
+	        <classpath refid="Deliverable-7.classpath"/>
+		</javac>
 	</target>
 	<!-- Generate jar(s) -->
 	<target name="jar">
@@ -19,9 +29,8 @@
 	</target>
 	<!-- Generate JavaDoc -->
 	<target name="javadoc">
-		<mkdir dir="javadoc"/>
-		<javadoc sourcepath="system/src" destdir="javadoc"/>
-		<javadoc sourcepath="clui/src" destdir="javadoc"/>
+		<mkdir dir="docs"/>
+		<javadoc sourcepath="../internSrc/" destdir="javadoc"/>
 	</target>
 	<!-- Run the generated jar -->
 	<target name="run">

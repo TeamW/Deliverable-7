@@ -1,6 +1,6 @@
 === How to run the code ===
 
-Ryan
+Execute build/build.xml with all targets in written order. Run will finally run the UI.
 
 === Contact information ===
 
