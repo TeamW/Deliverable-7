@@ -4,6 +4,12 @@ import uk.ac.glasgow.internman.UoGGrade;
 import uk.ac.glasgow.internman.Visit;
 import uk.ac.glasgow.internman.Visitor;
 
+/**
+ * {@link uk.ac.glasgow.internman.Visit}
+ * 
+ * @author TeamW
+ * 
+ */
 public class VisitImpl implements Visit {
 
 	private Visitor visitor;

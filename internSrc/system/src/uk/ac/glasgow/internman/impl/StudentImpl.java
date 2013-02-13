@@ -6,6 +6,12 @@ import uk.ac.glasgow.internman.Internship;
 import uk.ac.glasgow.internman.Student;
 import uk.ac.glasgow.internman.users.User;
 
+/**
+ * {@link uk.ac.glasgow.internman.Student}
+ * 
+ * @author TeamW
+ * 
+ */
 public class StudentImpl extends User implements Student, Serializable {
 
 	private static final long serialVersionUID = 1L;

@@ -93,7 +93,6 @@ public class UserDatabase implements AdminDutiesInterface,
 			employerDatabaseLoaded = loadEmployerDatabase();
 		}
 		if (employers.get(e.getUsername()) != null) {
-			System.out.println("Employer already exists.");
 			return false;
 		}
 		employers.put(e.getUsername(), e);
@@ -128,7 +127,6 @@ public class UserDatabase implements AdminDutiesInterface,
 		}
 		Student temp = students.get(student.getMatriculation());
 		if (temp == null) {
-			System.out.println("Student didn't exist in database, adding now.");
 			students.put(student.getUsername(), student);
 		} else {
 			temp = student;
@@ -157,8 +155,6 @@ public class UserDatabase implements AdminDutiesInterface,
 				return false;
 			}
 		} else {
-			System.out
-					.println("Creating course coordinator database, okay on first run.");
 			cc = new CourseCoordinatorImpl("tws", "1234");
 			ObjectOutputStream oos = null;
 			try {
@@ -208,7 +204,6 @@ public class UserDatabase implements AdminDutiesInterface,
 				return false;
 			}
 		} else {
-			System.out.println("Creating student database, okay on first run.");
 			students = new HashMap<String, Student>();
 			ObjectOutputStream oos = null;
 			try {
@@ -312,8 +307,6 @@ public class UserDatabase implements AdminDutiesInterface,
 				return false;
 			}
 		} else {
-			System.out
-					.println("Creating employer database, okay on first run.");
 			employers = new HashMap<String, Employer>();
 			ObjectOutputStream oos = null;
 			try {

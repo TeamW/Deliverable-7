@@ -1,0 +1,10 @@
+uk.ac.glasgow.clui
+uk.ac.glasgow.internman
+uk.ac.glasgow.internman.impl
+uk.ac.glasgow.internman.impl.adManager
+uk.ac.glasgow.internman.impl.admin
+uk.ac.glasgow.internman.impl.databases
+uk.ac.glasgow.internman.impl.login
+uk.ac.glasgow.internman.impl.testing
+uk.ac.glasgow.internman.ui
+uk.ac.glasgow.internman.users

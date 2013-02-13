@@ -6,6 +6,12 @@ import uk.ac.glasgow.internman.Advertisement;
 import uk.ac.glasgow.internman.Employer;
 import uk.ac.glasgow.internman.Role;
 
+/**
+ * {@link uk.ac.glasgow.internman.Advertisement}
+ * 
+ * @author TeamW
+ * 
+ */
 public class AdvertisementImpl implements Advertisement {
 
 	private static final long serialVersionUID = 1L;

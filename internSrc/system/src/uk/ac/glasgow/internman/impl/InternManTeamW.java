@@ -12,9 +12,9 @@ import uk.ac.glasgow.internman.impl.admin.Admin;
 import uk.ac.glasgow.internman.impl.login.LoginImpl;
 
 /**
- * InternManTeamW
+ * {@link uk.ac.glasgow.internman.InternMan}
  * 
- * @author 1002536r
+ * @author TeamW
  * 
  */
 public class InternManTeamW implements InternMan {

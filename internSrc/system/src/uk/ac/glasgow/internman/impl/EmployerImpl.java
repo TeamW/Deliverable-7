@@ -3,6 +3,12 @@ package uk.ac.glasgow.internman.impl;
 import uk.ac.glasgow.internman.Employer;
 import uk.ac.glasgow.internman.users.User;
 
+/**
+ * {@link uk.ac.glasgow.internman.Employer}
+ * 
+ * @author TeamW
+ * 
+ */
 public class EmployerImpl extends User implements Employer {
 
 	private static final long serialVersionUID = 1L;

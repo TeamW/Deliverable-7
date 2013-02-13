@@ -41,7 +41,7 @@ public class AdManager implements AdManagerInterface {
 		updateAdvertDatabase();
 		return newAdvert;
 	}
-	
+
 	public void removeAllAdverts() {
 		adverts.clear();
 		maxAdvertId = getMaxAdvertId();
@@ -68,10 +68,8 @@ public class AdManager implements AdManagerInterface {
 	@Override
 	public void publishAdvertisement(Integer adIndex, String comment) {
 		Advertisement temp = adverts.get(adIndex);
-		/* do we store comments? */
 		temp.PublishAd();
 		updateAdvertDatabase();
-
 	}
 
 	@SuppressWarnings("unchecked")
@@ -91,8 +89,6 @@ public class AdManager implements AdManagerInterface {
 				return false;
 			}
 		} else {
-			System.out
-					.println("Creating employer database, okay on first run.");
 			adverts = new HashMap<Integer, Advertisement>();
 			ObjectOutputStream oos = null;
 			try {

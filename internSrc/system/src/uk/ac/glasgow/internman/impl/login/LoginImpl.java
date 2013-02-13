@@ -7,8 +7,7 @@ public class LoginImpl implements Login {
 
 	private static UserDatabase UD = UserDatabase.getInstance();
 
-	public LoginImpl() {// TODO Auto-generated constructor stub
-
+	public LoginImpl() {
 	}
 
 	@Override

@@ -2,6 +2,12 @@ package uk.ac.glasgow.internman.impl;
 
 import uk.ac.glasgow.internman.Visitor;
 
+/**
+ * {@link uk.ac.glasgow.internman.Visitor}
+ * 
+ * @author TeamW
+ * 
+ */
 public class VisitorImpl implements Visitor {
 
 	private String name;

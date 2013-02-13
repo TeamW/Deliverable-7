@@ -7,6 +7,12 @@ import uk.ac.glasgow.internman.Internship;
 import uk.ac.glasgow.internman.Role;
 import uk.ac.glasgow.internman.Visit;
 
+/**
+ * {@link uk.ac.glasgow.internman.Internship}
+ * 
+ * @author TeamW
+ * 
+ */
 public class InternshipImpl implements Internship, Serializable {
 
 	private static final long serialVersionUID = 1L;

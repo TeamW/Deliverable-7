@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<project default="javadoc">
+    <target name="javadoc">
+        <javadoc access="public" author="true" classpath="/Applications/eclipse/plugins/org.hamcrest.core_1.1.0.v20090501071000.jar:/Applications/eclipse/plugins/org.junit_4.10.0.v4_10_0_v20120426-0900/junit.jar" destdir="../docs" doctitle="Sports Elimination" nodeprecated="false" nodeprecatedlist="false" noindex="false" nonavbar="false" notree="false" packagenames="uk.ac.glasgow.clui,uk.ac.glasgow.internman.impl.adManager,uk.ac.glasgow.internman.ui,uk.ac.glasgow.internman.impl,uk.ac.glasgow.internman.impl.testing,uk.ac.glasgow.internman.impl.databases,uk.ac.glasgow.internman,uk.ac.glasgow.internman.impl.admin,uk.ac.glasgow.internman.users,uk.ac.glasgow.internman.impl.login" source="1.7" sourcepath="../internSrc/system/src:../internSrc/clui/src" splitindex="true" use="true" version="true"/>
+    </target>
+</project>

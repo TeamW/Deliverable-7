@@ -5,6 +5,12 @@ import java.util.Date;
 
 import uk.ac.glasgow.internman.Role;
 
+/**
+ * {@link uk.ac.glasgow.internman.Role}
+ * 
+ * @author TeamW
+ * 
+ */
 public class RoleImpl implements Role, Serializable {
 
 	private static final long serialVersionUID = 1L;
