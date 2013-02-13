@@ -54,10 +54,11 @@ public class InternManTeamW implements InternMan {
 	 * Add individual commands to the UI, linking it to the facade implementation.
 	 * 
 	 * @param facade
-	 * 				Intern management system facade
+	 * 				Intern management system facade.
 	 * @param dialogue
-	 * 
+	 * 				Collection of system input, output and error streams.
 	 * @param userInterface
+	 * 				User Interface to add the commands to.
 	 */
 	private static void addCommands(InternMan facade, SystemDialogue dialogue,
 			InternManCLUI userInterface) {
