@@ -34,11 +34,12 @@ public class SubmitAdvertisementTest {
 		student = new StudentImpl("Gordon", "Reid", "example@example.com",
 				"1002536r", Programme.SE);
 		ub.updateStudent(student);
+		a = AdManager.getInstance();
 	}
 
 	@After
 	public void tearDown() throws Exception {
-		
+		a.removeAllAdverts();
 	}
 	
 	/*

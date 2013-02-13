@@ -40,7 +40,12 @@ public class AdManager implements AdManagerInterface {
 		adverts.put(maxAdvertId, newAdvert);
 		updateAdvertDatabase();
 		return newAdvert;
-
+	}
+	
+	public void removeAllAdverts() {
+		adverts.clear();
+		maxAdvertId = getMaxAdvertId();
+		updateAdvertDatabase();
 	}
 
 	@Override
@@ -52,7 +57,7 @@ public class AdManager implements AdManagerInterface {
 	@Override
 	public void reviseAdvertisement(Integer index, Advertisement revise) {
 		adverts.put(index, revise);
-
+		updateAdvertDatabase();
 	}
 
 	@Override

@@ -42,7 +42,7 @@ public class ViewAdvertisementSummary {
 
 	@After
 	public void tearDown() throws Exception {
-		adman.getAdvertisements().clear();
+		adman.removeAllAdverts();
 	}
 
 	@Test
