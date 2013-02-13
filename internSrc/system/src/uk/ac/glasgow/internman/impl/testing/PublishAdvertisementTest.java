@@ -54,19 +54,61 @@ public class PublishAdvertisementTest {
 	 * Submit a valid advert as a Course Coordinator.
 	 */
 	@Test
-	public void publishValidAdAsCC() {
-		s.login("TestCC", "letmein");
+	public void publishValidAdAsCCViewStudent() {
+		s.login("someEmployer", "letmein");
 		s.createNewAdvertisement("This is a test advertisement");
+		s.login("TestCC", "letmein");
 		s.publishAdvertisement(1, "Comment");
 		s.login("1002536r", "letmein");
 		ad = s.selectAdvertisement(1);
 		assertNotNull(ad);
 	}
+
+	@Test
+	public void publishValidAdAsCCViewCC() {
+		s.login("someEmployer", "letmein");
+		s.createNewAdvertisement("This is a test advertisement");
+		s.login("TestCC", "letmein");
+		s.publishAdvertisement(1, "Comment");
+		ad = s.selectAdvertisement(1);
+		assertNotNull(ad);
+	}
 	
 	@Test
-	public void publisInvalidAsCC(){
+	public void publishValidAdAsCCViewOwnerEmployer() {
+		s.login("someEmployer", "letmein");
+		s.createNewAdvertisement("This is a test advertisement");
+		s.login("TestCC", "letmein");
+		s.publishAdvertisement(1, "Comment");
+		s.login("someEmployer", "letmein");
+		ad = s.selectAdvertisement(1);
+		assertNotNull(ad);
+	}
+	
+	@Test
+	public void publishInvalidAsCCViewStudent(){
 		s.login("TestCC","letmein");
 		s.publishAdvertisement(0, "Comment");
+		s.login("1002536r", "letmein");
+		ad = s.selectAdvertisement(1);
+		assertNull(ad);
+	}
+	
+	@Test
+	public void publishInvalidAsCCViewCC(){
+		s.login("TestCC","letmein");
+		s.publishAdvertisement(0, "Comment");
+		ad = s.selectAdvertisement(1);
+		assertNull(ad);
+	}
+	
+	@Test
+	public void publishInvalidAsCCViewEmployer(){
+		s.login("TestCC","letmein");
+		s.publishAdvertisement(0, "Comment");
+		s.login("someEmployer", "letmein");
+		ad = s.selectAdvertisement(1);
+		assertNull(ad);
 	}
 
 }
