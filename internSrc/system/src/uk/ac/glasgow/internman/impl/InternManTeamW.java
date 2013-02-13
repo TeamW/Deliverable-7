@@ -263,6 +263,14 @@ public class InternManTeamW implements InternMan {
 		return null;
 	}
 
+	/**
+	 * Get a specific Student from the system. Only usable by Course Coordinator.
+	 * 
+	 * @param matriculation
+	 * 			Matriculation number of desired Student as a String.
+	 * 
+	 * @return Student object, or null if current user not a Course Coordinator.
+	 */
 	@Override
 	public Student selectStudent(String matriculation) {
 		if (currentUser instanceof CourseCoordinator)
@@ -270,6 +278,15 @@ public class InternManTeamW implements InternMan {
 		return null;
 	}
 
+	/**
+	 * Allows Course Coordinator to set a specific Advertisement's status to published.
+	 * 
+	 * @param advertisementIndex
+	 * 			Integer identifier of the advertisement.
+	 * @param comment
+	 * 			Any comments the coordinator wishes to make.
+	 * 
+	 */
 	@Override
 	public void publishAdvertisement(Integer advertisementIndex, String comment) {
 		if (currentUser instanceof CourseCoordinator)
