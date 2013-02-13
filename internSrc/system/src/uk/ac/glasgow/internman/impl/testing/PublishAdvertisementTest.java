@@ -9,7 +9,6 @@ import org.junit.Test;
 import uk.ac.glasgow.internman.Employer;
 import uk.ac.glasgow.internman.Student;
 import uk.ac.glasgow.internman.Student.Programme;
-import uk.ac.glasgow.internman.impl.AdvertisementImpl;
 import uk.ac.glasgow.internman.impl.EmployerImpl;
 import uk.ac.glasgow.internman.impl.InternManTeamW;
 import uk.ac.glasgow.internman.impl.StudentImpl;
@@ -17,13 +16,12 @@ import uk.ac.glasgow.internman.impl.adManager.AdManager;
 import uk.ac.glasgow.internman.impl.databases.UserDatabase;
 
 public class PublishAdvertisementTest {
-	
+
 	/*
-	 * ISSUE - facade asks for an integer key to retrieve
-	 * an advert from the database. There doesn't
-	 * seem to be any way to get this key for any specific advert, 
-	 * so publishing an advert isn't possible in the current version 
-	 * of the system.
+	 * ISSUE - facade asks for an integer key to retrieve an advert from the
+	 * database. There doesn't seem to be any way to get this key for any
+	 * specific advert, so publishing an advert isn't possible in the current
+	 * version of the system.
 	 */
 
 	InternManTeamW s;
@@ -50,10 +48,6 @@ public class PublishAdvertisementTest {
 		a.removeAllAdverts();
 	}
 
-	/*
-	 * Tests
-	 */
-
 	/**
 	 * Submit a valid advert as a Course Coordinator.
 	 */
@@ -63,10 +57,13 @@ public class PublishAdvertisementTest {
 		// login as CC
 		s.login("TestCC", "letmein");
 		s.createNewAdvertisement(adString);
-		AdvertisementImpl testAd = (AdvertisementImpl) s
-				.createNewAdvertisement(adString);
-		//This method (commented out) is the source of the problem.
-		//s.publishAdvertisement(advertisementIndex, "Can't submit this without index");
+		/*
+		 * AdvertisementImpl testAd = (AdvertisementImpl) s
+		 * .createNewAdvertisement(adString);
+		 */
+		// This method (commented out) is the source of the problem.
+		// s.publishAdvertisement(advertisementIndex,
+		// "Can't submit this without index");
 		fail();
 	}
 
