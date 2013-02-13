@@ -34,7 +34,7 @@ public class ViewAdvertisementSummary {
 				"1002253w", Programme.SE);
 		ub.updateStudent(student);
 		ub.changeCourseCoordinator("CC", "letmein");
-		e = new EmployerImpl("c","big@company.com", "letmein");
+		e = new EmployerImpl("Company","big@company.com", "letmein");
 		ub.addEmployer(e);
 		adman.createNewAdvertisement(e, "APPLY FOR ME");
 	}
@@ -65,9 +65,20 @@ public class ViewAdvertisementSummary {
 	public void ViewApprovedAdAsOwnerCompany(){
 		s.login("CC", "letmein");
 		s.publishAdvertisement(1,"bloody good, ol' chap");
-		s.login("c","letmein");
+		s.login("Company","letmein");
 		a = s.selectAdvertisement(1);
 		assertEquals(a.getApplicationDetails(),"APPLY FOR ME");
+	}
+	
+	@Test
+	public void ViewApprovedAdAsOtherCompany(){
+		s.login("CC", "letmein");
+		s.publishAdvertisement(1, "bloody good, ol' chap");
+		e = new EmployerImpl("OtherCompany","big@company.com", "letmein");
+		ub.addEmployer(e);
+		s.login("OtherCompany","letmein");
+		a = s.selectAdvertisement(1);
+		assertEquals(a,null);
 	}
 
 }
