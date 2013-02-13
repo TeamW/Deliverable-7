@@ -23,7 +23,9 @@ public class Admin implements AdminInterface {
 
 	@Override
 	public void publishAdvertisement(int advertisementIndex, String comment) {
-		AD.publishAdvertisement(advertisementIndex, comment);
+		Advertisement ad = AD.selectAdvertisement(advertisementIndex);
+		if(ad!=null)
+			AD.publishAdvertisement(advertisementIndex, comment);
 	}
 
 	@Override

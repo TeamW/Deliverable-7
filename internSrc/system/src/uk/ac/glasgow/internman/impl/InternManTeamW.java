@@ -253,7 +253,7 @@ public class InternManTeamW implements InternMan {
 	@Override
 	public void publishAdvertisement(Integer advertisementIndex, String comment) {
 		if (currentUser instanceof CourseCoordinator)
-			adManager.publishAdvertisement(advertisementIndex, comment);
+			admin.publishAdvertisement(advertisementIndex, comment);
 	}
 
 	@Override

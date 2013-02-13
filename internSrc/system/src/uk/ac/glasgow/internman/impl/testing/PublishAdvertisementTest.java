@@ -6,6 +6,7 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
+import uk.ac.glasgow.internman.Advertisement;
 import uk.ac.glasgow.internman.Employer;
 import uk.ac.glasgow.internman.Student;
 import uk.ac.glasgow.internman.Student.Programme;
@@ -29,6 +30,7 @@ public class PublishAdvertisementTest {
 	Employer e;
 	Student student;
 	UserDatabase ub;
+	Advertisement ad;
 
 	@Before
 	public void setUp() throws Exception {
@@ -53,18 +55,18 @@ public class PublishAdvertisementTest {
 	 */
 	@Test
 	public void publishValidAdAsCC() {
-		String adString = "This is a test advertisement";
-		// login as CC
 		s.login("TestCC", "letmein");
-		s.createNewAdvertisement(adString);
-		/*
-		 * AdvertisementImpl testAd = (AdvertisementImpl) s
-		 * .createNewAdvertisement(adString);
-		 */
-		// This method (commented out) is the source of the problem.
-		// s.publishAdvertisement(advertisementIndex,
-		// "Can't submit this without index");
-		fail();
+		s.createNewAdvertisement("This is a test advertisement");
+		s.publishAdvertisement(1, "Comment");
+		s.login("1002536r", "letmein");
+		ad = s.selectAdvertisement(1);
+		assertNotNull(ad);
+	}
+	
+	@Test
+	public void publisInvalidAsCC(){
+		s.login("TestCC","letmein");
+		s.publishAdvertisement(0, "Comment");
 	}
 
 }
