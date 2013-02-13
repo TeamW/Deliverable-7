@@ -17,6 +17,14 @@ import uk.ac.glasgow.internman.impl.adManager.AdManager;
 import uk.ac.glasgow.internman.impl.databases.UserDatabase;
 
 public class PublishAdvertisementTest {
+	
+	/*
+	 * ISSUE - facade asks for an integer key to retrieve
+	 * an advert from the database. There doesn't
+	 * seem to be any way to get this key for any specific advert, 
+	 * so publishing an advert isn't possible in the current version 
+	 * of the system.
+	 */
 
 	InternManTeamW s;
 	AdManager a;

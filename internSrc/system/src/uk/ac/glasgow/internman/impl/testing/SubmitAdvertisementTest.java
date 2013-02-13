@@ -92,5 +92,18 @@ public class SubmitAdvertisementTest {
 		;
 		assertEquals(null, testAd);
 	}
+	
+	/**
+	 * Attempt a submission while not logged in
+	 */
+	@Test
+	public void submitValidAdNotLoggedIn() {
+		String adString = "This is a test advertisement";
+		s.createNewAdvertisement(adString);
+		AdvertisementImpl testAd = (AdvertisementImpl) s
+				.createNewAdvertisement(adString);
+		;
+		assertEquals(null, testAd);
+	}
 
 }
