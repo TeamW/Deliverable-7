@@ -219,7 +219,7 @@ public class InternManTeamW implements InternMan {
 	 * @param index
 	 * 			Integer key to identify advertisement.
 	 * 
-	 * @return The desired advertisement, or null if advertisement doesn't exit
+	 * @return The desired Advertisement, or null if Advertisement doesn't exit
 	 * 		   or user has wrong permissions.
 	 */
 	@Override
@@ -239,6 +239,14 @@ public class InternManTeamW implements InternMan {
 		return null;
 	}
 
+	/**
+	 * Gets a role from the system.
+	 * 
+	 * @param advertisementIndex
+	 * 			Index of desired advertisement.
+	 * @param roleIndex
+	 * 			Index of role.
+	 */
 	@Override
 	public Role selectRole(Integer advertisementIndex, Integer roleIndex) {
 		Advertisement ad = adManager.selectAdvertisement(advertisementIndex);
