@@ -192,6 +192,14 @@ public class InternManTeamW implements InternMan {
 		return null;
 	}
 
+	/**
+	 * Add a new advertisement into the system.
+	 * 
+	 * @param applicationDetails
+	 * 			Details of the advertisement.
+	 * 
+	 * @return The new Advertisement object.
+	 */
 	@Override
 	public Advertisement createNewAdvertisement(String applicationDetails) {
 		if (currentUser instanceof CourseCoordinator)
