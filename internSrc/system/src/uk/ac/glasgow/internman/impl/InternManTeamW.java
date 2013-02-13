@@ -315,6 +315,12 @@ public class InternManTeamW implements InternMan {
 							+ " " + managerEmail);
 	}
 
+	/**
+	 * Allows the Course Coordinator to approve an offer.
+	 * 
+	 * @param matriculation
+	 * 			Matriculation number of Student as a String.
+	 */
 	@Override
 	public void approveAcceptedOffer(String matriculation) {
 		if (currentUser instanceof CourseCoordinator)
