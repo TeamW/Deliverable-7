@@ -3,21 +3,20 @@
 	<!-- Build classes -->
 	<target name="compile">
 	    <path id="JUnit 4.libraryclasspath">
-	        <pathelement location="../../../../Applications/eclipse/plugins/org.junit_4.10.0.v4_10_0_v20120426-0900/junit.jar"/>
-	        <pathelement location="../../../../Applications/eclipse/plugins/org.hamcrest.core_1.1.0.v20090501071000.jar"/>
+	        <pathelement location="org.junit_4.10.0.v4_10_0_v20120426-0900/junit.jar"/>
+	        <pathelement location="org.hamcrest.core_1.1.0.v20090501071000.jar"/>
 	    </path>
 	    <path id="Deliverable-7.classpath">
-	        <pathelement location="bin"/>
 	        <path refid="JUnit 4.libraryclasspath"/>
 	    </path>
-		<mkdir dir="build/classes"/>
-		<javac srcdir="../internSrc/" destdir="build/classes">
+		<mkdir dir="../bin"/>
+		<javac srcdir="../internSrc/" destdir="../bin">
 	        <classpath refid="Deliverable-7.classpath"/>
 		</javac>
 	</target>
 	<!-- Generate jar(s) -->
 	<target name="jar">
-		<jar destfile="build/internMan.jar" basedir="build/classes">
+		<jar destfile="internMan.jar" basedir="../bin">
 			<manifest>
 				<attribute name="Main-Class" value="uk.ac.glasgow.internman.ui.InternManCLUI"/>
 			</manifest>
@@ -25,15 +24,10 @@
 	</target>
 	<!-- Install -->
 	<target name="install">
-		<copy file="build/internMan.jar" tofile="internMan.jar"/>
-	</target>
-	<!-- Generate JavaDoc -->
-	<target name="javadoc">
-		<mkdir dir="docs"/>
-		<javadoc sourcepath="../internSrc/" destdir="javadoc"/>
+		<move file="internMan.jar" tofile="../internMan.jar"/>
 	</target>
 	<!-- Run the generated jar -->
 	<target name="run">
-		<java jar="internMan.jar" fork="true"/>
+		<java jar="../internMan.jar" fork="true"/>
 	</target>
 </project>
