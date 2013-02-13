@@ -149,9 +149,9 @@ public class InternManTeamW implements InternMan {
 
 	@Override
 	public Employer registerNewEmployer(String name, String emailAddress) {
-		if (currentUser instanceof CourseCoordinator
-				|| currentUser instanceof Employer)
+		if (currentUser.getUsername().equals(admin.getCourseCoordinator().getUsername())){
 			return admin.registerNewEmployer(name, emailAddress);
+		}
 		return null;
 	}
 

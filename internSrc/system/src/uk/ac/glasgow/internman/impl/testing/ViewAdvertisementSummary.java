@@ -34,9 +34,8 @@ public class ViewAdvertisementSummary {
 				"1002253w", Programme.SE);
 		ub.updateStudent(student);
 		ub.changeCourseCoordinator("CC", "letmein");
-		e = new EmployerImpl("Company","big@company.com", "letmein");
-		ub.addEmployer(e);
-		adman.createNewAdvertisement(e, "APPLY FOR ME");
+		s.registerNewEmployer("Company", "big@company.com");
+		adman.createNewAdvertisement(new EmployerImpl("Company","Company@Company.com","letmein"), "APPLY FOR ME");
 	}
 
 	@After
@@ -74,7 +73,8 @@ public class ViewAdvertisementSummary {
 	public void ViewApprovedAdAsOtherCompany(){
 		s.login("CC", "letmein");
 		s.publishAdvertisement(1, "bloody good, ol' chap");
-		s.registerNewEmployer("OtherCompany", "Other@Company.com");
+		e = s.registerNewEmployer("OtherCompany", "Other@Company.com");
+		assertNotNull(e);
 		s.login("OtherCompany","letmein");
 		a = s.selectAdvertisement(1);
 		assertEquals(a,null);
@@ -104,9 +104,8 @@ public class ViewAdvertisementSummary {
 	@Test
 	public void ViewPendingAsAsOtherCompany(){
 		s.login("CC", "letmein");
-		e = new EmployerImpl("OtherCompany","big@company.com", "letmein");
-		s.registerNewEmployer("OtherCompany", "Other@Company.com");
-		s.login("OtherCompany","letmein");
+		e = s.registerNewEmployer("Other", "Other@Company.com");
+		s.login("Other","letmein");
 		a = s.selectAdvertisement(1);
 		assertEquals(a,null);
 	}

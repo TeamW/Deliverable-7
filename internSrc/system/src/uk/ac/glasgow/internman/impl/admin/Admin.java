@@ -28,7 +28,11 @@ public class Admin implements AdminInterface {
 
 	@Override
 	public Employer registerNewEmployer(String name, String email) {
-		Employer Emp = new EmployerImpl(name, email, name);
+		Employer temp = UD.getEmployer(name);
+		if(temp!=null){
+			return temp;
+		}
+		Employer Emp = new EmployerImpl(name, email, "letmein");
 		return UD.addEmployer(Emp) ? Emp : null;
 	}
 
