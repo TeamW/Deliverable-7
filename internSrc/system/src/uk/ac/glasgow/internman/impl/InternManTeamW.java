@@ -154,7 +154,9 @@ public class InternManTeamW implements InternMan {
 			if (currentUser instanceof Student
 					&& ad.getStatus() == Advertisement.AdvertisementStatus.PUBLISHED)
 				return ad;
-			else if (currentUser instanceof Employer && (currentUser.getUsername() == ad.getEmployer().getUsername()))
+			else if (currentUser instanceof Employer
+					&& (currentUser.getUsername().equals(ad.getEmployer()
+							.getUsername())))
 				return ad;
 		}
 		return null;
