@@ -209,13 +209,15 @@ public class InternManTeamW implements InternMan {
 
 	@Override
 	public void assignAcademicVisitor(String matriculation, String visitorName) {
-		admin.assignAcademicVisitor(matriculation, visitorName);
+		if (currentUser instanceof CourseCoordinator)
+			admin.assignAcademicVisitor(matriculation, visitorName);
 	}
 
 	@Override
 	public void recordVisitAssessment(String matriculation, UoGGrade grade,
 			String description) {
-		admin.recordVisitAssessment(matriculation, grade, description);
+		if (currentUser instanceof CourseCoordinator)
+			admin.recordVisitAssessment(matriculation, grade, description);
 	}
 
 	@Override
