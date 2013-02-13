@@ -210,6 +210,18 @@ public class InternManTeamW implements InternMan {
 		return null;
 	}
 
+	/**
+	 * Selects a specific advertisement from the system, based on user access
+	 * level. Course Coordinators can see any advert, Employers can only get 
+	 * advertisements they submitted and Students can only get published
+	 * advertisements.
+	 * 
+	 * @param index
+	 * 			Integer key to identify advertisement.
+	 * 
+	 * @return The desired advertisement, or null if advertisement doesn't exit
+	 * 		   or user has wrong permissions.
+	 */
 	@Override
 	public Advertisement selectAdvertisement(Integer index) {
 		Advertisement ad = adManager.selectAdvertisement(index);
