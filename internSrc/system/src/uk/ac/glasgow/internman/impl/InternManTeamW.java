@@ -16,25 +16,25 @@ import uk.ac.glasgow.internman.impl.login.LoginImpl;
 ;
 
 /**
- * Session
+ * InternManTeamW
  * 
  * @author 1002536r
  * 
  */
-public class Session implements InternMan {
+public class InternManTeamW implements InternMan {
 	private LoginImpl login;
 	private User currentUser = null;
 	private AdManager adManager;
 	private Admin admin;
 
-	public Session() {
+	public InternManTeamW() {
 		login = new LoginImpl();
 		adManager = AdManager.getInstance();
 		admin = Admin.getInstance();
 	}
 
 	public static void main(String[] args) {
-		InternMan facade = new Session();
+		InternMan facade = new InternManTeamW();
 		SystemDialogue dialogue = new SystemDialogue(System.in, System.out,
 				System.err);
 		InternManCLUI userInterface = new InternManCLUI(facade, dialogue);

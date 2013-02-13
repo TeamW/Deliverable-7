@@ -17,14 +17,14 @@ import uk.ac.glasgow.internman.impl.databases.UserDatabase;
 public class ApproveAcceptedOffer {
 
 	UserDatabase ub;
-	Session s;
+	InternManTeamW s;
 	Student student;
 	Employer e;
 	Role r;
 
 	@Before
 	public void setUp() throws Exception {
-		s = new Session();
+		s = new InternManTeamW();
 		ub = UserDatabase.getInstance();
 		ub.changeCourseCoordinator("TestCC", "letmein");
 		student = new StudentImpl("Gordon", "Reid", "example@example.com",

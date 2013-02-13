@@ -12,14 +12,14 @@ import uk.ac.glasgow.internman.impl.databases.UserDatabase;
 
 public class LoginTest {
 
-	Session s;
+	InternManTeamW s;
 	UserDatabase ub;
 	Student student;
 	Employer e;
 
 	@Before
 	public void setUp() throws Exception {
-		s = new Session();
+		s = new InternManTeamW();
 		ub = UserDatabase.getInstance();
 		ub.changeCourseCoordinator("TestCC", "letmein");
 		student = new StudentImpl("Gordon", "Reid", "example@example.com",

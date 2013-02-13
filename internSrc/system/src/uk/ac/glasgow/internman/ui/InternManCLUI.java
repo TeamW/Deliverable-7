@@ -4,7 +4,7 @@ import uk.ac.glasgow.clui.CommandLineUI;
 import uk.ac.glasgow.clui.SystemCommand;
 import uk.ac.glasgow.clui.SystemDialogue;
 import uk.ac.glasgow.internman.InternMan;
-import uk.ac.glasgow.internman.impl.Session;
+import uk.ac.glasgow.internman.impl.InternManTeamW;
 
 /**
  * Extends the CommandLineUI framework class to provide a command line user
@@ -31,7 +31,7 @@ public class InternManCLUI extends CommandLineUI<InternMan> {
 	 * @param args - the program does not accept any optional arguments.
 	 */
 	public static void main(String[] args) {
-		InternMan facade = new Session();
+		InternMan facade = new InternManTeamW();
 		
 		SystemDialogue dialogue = new SystemDialogue(System.in, System.out, System.err);
 

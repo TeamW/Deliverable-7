@@ -11,14 +11,14 @@ import uk.ac.glasgow.internman.Student;
 import uk.ac.glasgow.internman.Student.Programme;
 import uk.ac.glasgow.internman.impl.AdvertisementImpl;
 import uk.ac.glasgow.internman.impl.EmployerImpl;
-import uk.ac.glasgow.internman.impl.Session;
+import uk.ac.glasgow.internman.impl.InternManTeamW;
 import uk.ac.glasgow.internman.impl.StudentImpl;
 import uk.ac.glasgow.internman.impl.adManager.AdManager;
 import uk.ac.glasgow.internman.impl.databases.UserDatabase;
 
 public class SubmitAdvertisementTest {
 	
-	Session s;
+	InternManTeamW s;
 	AdManager a;
 	Employer e;
 	Student student;
@@ -26,7 +26,7 @@ public class SubmitAdvertisementTest {
 
 	@Before
 	public void setUp() throws Exception {
-		s = new Session();
+		s = new InternManTeamW();
 		ub = UserDatabase.getInstance();
 		ub.changeCourseCoordinator("TestCC", "letmein");
 		e = new EmployerImpl("someEmployer", "example@example.com", "letmein");
