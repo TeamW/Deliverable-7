@@ -14,6 +14,9 @@ import uk.ac.glasgow.internman.impl.login.LoginImpl;
 /**
  * {@link uk.ac.glasgow.internman.InternMan}
  * 
+ * This is our implementation of the intern management system facade.
+ * All commands are run through the UI and directed here. 
+ * 
  * @author TeamW
  * 
  */
@@ -23,12 +26,21 @@ public class InternManTeamW implements InternMan {
 	private AdManager adManager;
 	private Admin admin;
 
+	/**
+	 * Create an instance of the class with appropriate component objects.
+	 */
 	public InternManTeamW() {
 		login = new LoginImpl();
 		adManager = AdManager.getInstance();
 		admin = Admin.getInstance();
 	}
 
+	/**
+	 * Main method for the internship management system. Creates and spins off
+	 * a thread for the UI.
+	 * 
+	 * @param args
+	 */
 	public static void main(String[] args) {
 		InternMan facade = new InternManTeamW();
 		SystemDialogue dialogue = new SystemDialogue(System.in, System.out,
@@ -38,6 +50,15 @@ public class InternManTeamW implements InternMan {
 		userInterface.run();
 	}
 
+	/**
+	 * Add individual commands to the UI, linking it to the facade implementation.
+	 * 
+	 * @param facade
+	 * 				Intern management system facade
+	 * @param dialogue
+	 * 
+	 * @param userInterface
+	 */
 	private static void addCommands(InternMan facade, SystemDialogue dialogue,
 			InternManCLUI userInterface) {
 		SystemCommand<InternMan> showAdvertisementSummary = new ViewAdvertisementSummaryCommand(
