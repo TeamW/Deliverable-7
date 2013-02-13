@@ -7,7 +7,6 @@ import org.junit.runners.Suite;
 @Suite.SuiteClasses({ ApproveAcceptedOffer.class, LoginTest.class,
 		NotifyAcceptedOffer.class, PublishAdvertisementTest.class,
 		SubmitAdvertisementTest.class, ViewStudentDetail.class,
-		ViewAdvertisementSummary.class, RegisterEmployer.class,
-		ViewAdvertisementDetail.class })
+		ViewAdvertisementSummary.class, RegisterEmployer.class })
 public class AllTests {
 }
