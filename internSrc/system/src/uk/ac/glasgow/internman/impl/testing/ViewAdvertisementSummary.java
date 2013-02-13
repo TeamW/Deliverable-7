@@ -34,6 +34,7 @@ public class ViewAdvertisementSummary {
 				"1002253w", Programme.SE);
 		ub.updateStudent(student);
 		ub.changeCourseCoordinator("CC", "letmein");
+		s.login("CC", "letmein");
 		s.registerNewEmployer("Company", "big@company.com");
 		adman.createNewAdvertisement(new EmployerImpl("Company","Company@Company.com","letmein"), "APPLY FOR ME");
 	}

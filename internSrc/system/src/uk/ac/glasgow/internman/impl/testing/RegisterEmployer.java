@@ -9,6 +9,7 @@ import org.junit.Test;
 import uk.ac.glasgow.internman.Employer;
 import uk.ac.glasgow.internman.Student;
 import uk.ac.glasgow.internman.Student.Programme;
+import uk.ac.glasgow.internman.impl.EmployerImpl;
 import uk.ac.glasgow.internman.impl.InternManTeamW;
 import uk.ac.glasgow.internman.impl.StudentImpl;
 import uk.ac.glasgow.internman.impl.databases.UserDatabase;
@@ -27,6 +28,7 @@ public class RegisterEmployer {
 		ub.changeCourseCoordinator("CC", "letmein");
 		student = new StudentImpl("Ryan","Wells","ryan@wells.com","1002253w",Programme.SE);
 		ub.updateStudent(student);
+		ub.addEmployer(new EmployerImpl("BigEmployer","Big@Employer.com","letmein"));
 	}
 
 	@After
@@ -44,6 +46,13 @@ public class RegisterEmployer {
 	@Test
 	public void AddEmployerAsStudent(){
 		s.login("1002253w", "letmein");
+		e = s.registerNewEmployer("Employer", "Employer@employer.com");
+		assertNull(e);
+	}
+	
+	@Test
+	public void AddEmployerAsEmployer(){
+		s.login("BigEmployer", "letmein");
 		e = s.registerNewEmployer("Employer", "Employer@employer.com");
 		assertNull(e);
 	}
