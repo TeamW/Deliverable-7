@@ -293,6 +293,16 @@ public class InternManTeamW implements InternMan {
 			admin.publishAdvertisement(advertisementIndex, comment);
 	}
 
+	/**
+	 * Notify Course Coordinator if a role has been accepted.
+	 * 
+	 * @param role
+	 * 			Role user was accepted in.
+	 * @param managerName
+	 * 			Manager offering role.
+	 * @param managerEmail
+	 * 			Email of manager
+	 */
 	@Override
 	public void notifyAcceptedOffer(Role role, String managerName,
 			String managerEmail) {
