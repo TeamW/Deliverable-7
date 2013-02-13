@@ -161,6 +161,12 @@ public class InternManTeamW implements InternMan {
 		return null;
 	}
 
+	/**
+	 * If current User is Course Coordinator get a map of all Students stored in the 
+	 * system, otherwise return null.
+	 * 
+	 * @return Map of Students in the system, or null.
+	 */
 	@Override
 	public Map<String, Student> getStudents() {
 		if (currentUser instanceof CourseCoordinator)
