@@ -146,8 +146,6 @@ public class InternManTeamW implements InternMan {
 	@Override
 	public Advertisement selectAdvertisement(Integer index) {
 		Advertisement ad = adManager.selectAdvertisement(index);
-		System.out.println(ad.getEmployer().getUsername());
-		System.out.println(currentUser.getUsername());
 		if (ad != null) {
 			if (currentUser instanceof CourseCoordinator)
 				return ad;
