@@ -174,6 +174,16 @@ public class InternManTeamW implements InternMan {
 		return null;
 	}
 
+	/**
+	 * Register a new employer in the system.
+	 * 
+	 * @param name
+	 * 			Name of employer.
+	 * @param emailAddress
+	 * 			Email address of employer.
+	 * 
+	 * @return New Employer object that was created.
+	 */
 	@Override
 	public Employer registerNewEmployer(String name, String emailAddress) {
 		if (currentUser.getUsername().equals(admin.getCourseCoordinator().getUsername())){
