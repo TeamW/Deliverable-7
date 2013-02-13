@@ -115,11 +115,24 @@ public class InternManTeamW implements InternMan {
 		return true;
 	}
 
+	/**
+	 * Get the current system user.
+	 * 
+	 * @return Current user object. If no user logged in return null.
+	 */
 	@Override
 	public User getCurrentUser() {
 		return currentUser;
 	}
 
+	/**
+	 * Get a map of advertisements appropriate to the user access level. If
+	 * user is a Course Coordinator this is all the adverts, published or unpublished.
+	 * If user is an Employer get only advertisements submitted by this Employer.
+	 * If user is a Student the map will contain only published advertisements.
+	 * 
+	 * @return A map of advertisements.
+	 */
 	@Override
 	public Map<Integer, Advertisement> getAdvertisements() {
 		if (currentUser instanceof CourseCoordinator) {
