@@ -51,7 +51,7 @@ public class PublishAdvertisementTest {
 	}
 
 	/*
-	 * Tests - submit as employer, submit as CC submit ad as student
+	 * Tests
 	 */
 
 	/**
@@ -65,8 +65,9 @@ public class PublishAdvertisementTest {
 		s.createNewAdvertisement(adString);
 		AdvertisementImpl testAd = (AdvertisementImpl) s
 				.createNewAdvertisement(adString);
-		System.out.println(testAd.getApplicationDetails());
-		assertEquals(adString, testAd.getApplicationDetails());
+		//This method (commented out) is the source of the problem.
+		//s.publishAdvertisement(advertisementIndex, "Can't submit this without index");
+		fail();
 	}
 
 }
