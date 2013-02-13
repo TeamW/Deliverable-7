@@ -99,6 +99,14 @@ public class InternManTeamW implements InternMan {
 				new RecordVisitAssessmentCommand(facade, dialogue));
 	}
 
+	/**
+	 * Login to the system as a Student, Course Coordinator or Employer
+	 * 
+	 * @param userName
+	 * 				Name of user.
+	 * @param password
+	 * 				User password.
+	 */
 	@Override
 	public boolean login(String userName, String password) {
 		currentUser = login.verifyUser(userName, password);
