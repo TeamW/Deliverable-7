@@ -29,7 +29,7 @@ public class StudentImpl extends User implements Student, Serializable {
 		this.surname = surname;
 		this.email = email;
 		this.matric = matric;
-		this.internships = new List<InternshipImpl>();
+		this.internships = new ArrayList<InternshipImpl>();
 		this.programme = programme;
 	}
 

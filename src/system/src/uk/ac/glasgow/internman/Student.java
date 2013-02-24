@@ -29,7 +29,7 @@ public interface Student {
 	 * 
 	 * @return A list of internship objects if the student has any, null otherwise.
 	 */
-	Internship getInternships();
+	ArrayList<Internship> getInternships();
 
 	/**
 	 * Sets an internship the student has.
