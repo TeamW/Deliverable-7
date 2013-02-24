@@ -396,7 +396,7 @@ public class InternManTeamW implements InternMan {
 			Student student = (Student) currentUser;
 			Role temp = new RoleImpl(title, location, start, end, description,
 					salary);
-			student.getInternship().setRole(temp);
+			student.getInternships().get(0).setRole(temp);
 			return temp;
 		}
 		return null;

@@ -1,5 +1,7 @@
 package uk.ac.glasgow.internman;
 
+import java.util.ArrayList;
+
 import uk.ac.glasgow.internman.Internship;
 
 /**

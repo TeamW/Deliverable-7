@@ -1,6 +1,7 @@
 package uk.ac.glasgow.internman.impl;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 
 import uk.ac.glasgow.internman.Internship;
 import uk.ac.glasgow.internman.Student;
@@ -29,7 +30,7 @@ public class StudentImpl extends User implements Student, Serializable {
 		this.surname = surname;
 		this.email = email;
 		this.matric = matric;
-		this.internships = new ArrayList<InternshipImpl>();
+		this.internships = new ArrayList<Internship>();
 		this.programme = programme;
 	}
 
@@ -41,7 +42,7 @@ public class StudentImpl extends User implements Student, Serializable {
 	}
 
 	public void setInternship(Internship i) {
-		internship = i;
+		internships.add(i);
 	}
 
 	@Override
