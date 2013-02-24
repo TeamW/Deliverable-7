@@ -42,6 +42,13 @@ public class StudentImpl extends User implements Student, Serializable {
 	}
 
 	public void setInternship(Internship i) {
+		// need to check that internships don't overlap.
+		// overlap if ( start1 < end2 and start2 < end1 )
+		for(Internship internship : internships){
+			if(i.getRole().getStart().before(internship.getRole().getEnd())
+				&& internship.getRole().getStart().before(i.getRole().getEnd()))
+				return; // overlap, return
+		}
 		internships.add(i);
 	}
 
