@@ -19,7 +19,7 @@ public class StudentImpl extends User implements Student, Serializable {
 	private String surname;
 	private String email;
 	private String matric;
-	private List<Internship> internships;
+	private ArrayList<Internship> internships;
 	private Programme programme;
 
 	public StudentImpl(String forename, String surname, String email,
@@ -34,8 +34,10 @@ public class StudentImpl extends User implements Student, Serializable {
 	}
 
 	@Override
-	public List<Internship> getInternships() {
-		return internships;
+	public ArrayList<Internship> getInternships() {
+		if(!internships.isEmpty())
+			return internships;
+		return null;
 	}
 
 	public void setInternship(Internship i) {
