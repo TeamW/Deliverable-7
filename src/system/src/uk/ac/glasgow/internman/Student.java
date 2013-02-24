@@ -25,14 +25,14 @@ public interface Student {
 	}
 
 	/**
-	 * A student will have an internship assocaited with them.
+	 * A student will have internships associated with them.
 	 * 
-	 * @return An internship object if the student has one, null otherwise.
+	 * @return A list of internship objects if the student has any, null otherwise.
 	 */
-	Internship getInternship();
+	Internship getInternships();
 
 	/**
-	 * Sets the internship the student has.
+	 * Sets an internship the student has.
 	 * 
 	 * @param i
 	 *            Internship object that a student will have.
