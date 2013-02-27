@@ -3,6 +3,8 @@ package uk.ac.glasgow.internman.impl;
 import java.io.Serializable;
 import java.util.Date;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map.Entry;
 
 import uk.ac.glasgow.internman.Internship;
 import uk.ac.glasgow.internman.Student;
@@ -21,9 +23,10 @@ public class StudentImpl extends User implements Student, Serializable {
 	private String surname;
 	private String email;
 	private String matric;
-	private ArrayList<Internship> internships;
+	private HashMap<Integer, Internship> internships;
 	private Programme programme;
 	private boolean sufficientInternships = false;
+	private Integer maxInternshipId;
 
 	public StudentImpl(String forename, String surname, String email,
 			String matric, Programme programme) {
@@ -32,12 +35,12 @@ public class StudentImpl extends User implements Student, Serializable {
 		this.surname = surname;
 		this.email = email;
 		this.matric = matric;
-		this.internships = new ArrayList<Internship>();
+		this.internships = new HashMap<Integer, Internship>();
 		this.programme = programme;
 	}
 
 	@Override
-	public ArrayList<Internship> getInternships() {
+	public HashMap<Integer, Internship> getInternships() {
 		if(!internships.isEmpty())
 			return internships;
 		return null;
@@ -46,12 +49,13 @@ public class StudentImpl extends User implements Student, Serializable {
 	public void setInternship(Internship i) {
 		// need to check that internships don't overlap.
 		// overlap if ( start1 < end2 and start2 < end1 )
-		for( Internship internship : internships){
-			if( i.getRole().getStart().before(internship.getRole().getEnd())
-				&& internship.getRole().getStart().before(i.getRole().getEnd()))
+		for( Entry<Integer, Internship> internship : internships.entrySet()){
+			if( i.getRole().getStart().before(internship.getValue().getRole().getEnd())
+				&& internship.getValue().getRole().getStart().before(i.getRole().getEnd()))
 				return; // overlap, return
 		}
-		internships.add(i);
+		maxInternshipId += 1;
+		internships.put(maxInternshipId, i);
 		
 		// check if student now has sufficient internships
 		calcSufficientInternships();
@@ -61,11 +65,11 @@ public class StudentImpl extends User implements Student, Serializable {
 	private void calcSufficientInternships(){
 		Date start = internships.get(0).getRole().getStart();
 		Date end = internships.get(0).getRole().getEnd();
-		for( Internship internship : internships){
-			if( internship.getRole().getStart().before(start))
-				start = internship.getRole().getStart();
-			if( internship.getRole().getEnd().after(end))
-				end = internship.getRole().getEnd();
+		for( Entry<Integer, Internship> internship : internships.entrySet()){
+			if( internship.getValue().getRole().getStart().before(start))
+				start = internship.getValue().getRole().getStart();
+			if( internship.getValue().getRole().getEnd().after(end))
+				end = internship.getValue().getRole().getEnd();
 		}
 		
 		// get the difference in milliseconds, subtract and convert to days

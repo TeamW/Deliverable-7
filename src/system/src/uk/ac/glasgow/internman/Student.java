@@ -1,6 +1,7 @@
 package uk.ac.glasgow.internman;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 import uk.ac.glasgow.internman.Internship;
 
@@ -31,7 +32,7 @@ public interface Student {
 	 * 
 	 * @return A list of internship objects if the student has any, null otherwise.
 	 */
-	ArrayList<Internship> getInternships();
+	HashMap<Integer, Internship> getInternships();
 
 	/**
 	 * Sets an internship the student has.
