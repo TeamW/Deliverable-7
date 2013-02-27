@@ -80,7 +80,7 @@ public class ViewStudentDetailCommand extends SystemCommand<InternMan> {
 				
 				Visit visit = internship.getValue().getVisit();
 				
-				if (visit != null){
+				if (role != null && visit != null){
 					Visitor visitor = visit.getVisitor();
 					
 					if (visitor != null)
