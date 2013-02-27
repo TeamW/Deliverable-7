@@ -36,14 +36,14 @@ public class ApproveAcceptedOffer {
 				"awesome job", 123912.12);
 		student.setInternship(new InternshipImpl("john",
 				"john@someEmployer.com", e, r));
-		student.getInternship().accept();
+		student.getInternships().get(0).accept();
 	}
 
 	@After
 	public void tearDown() throws Exception {
 		s.login("TestCC", "letmein");
 		Student temp = s.selectStudent("1002536r");
-		temp.getInternship().accept();
+		temp.getInternships().get(0).accept();
 	}
 
 	/**
@@ -55,7 +55,7 @@ public class ApproveAcceptedOffer {
 		s.login("TestCC", "letmein");
 		Student temp = s.selectStudent("1002536r");
 		s.approveAcceptedOffer("1002536r");
-		InternshipStatus status = temp.getInternship().getStatus();
+		InternshipStatus status = temp.getInternships().get(0).getStatus();
 		assertEquals(status, InternshipStatus.APPROVED);
 	}
 
@@ -68,7 +68,7 @@ public class ApproveAcceptedOffer {
 		s.approveAcceptedOffer("1002536r");
 		s.login("TestCC", "letmein");
 		Student temp = s.selectStudent("1002536r");
-		InternshipStatus status = temp.getInternship().getStatus();
+		InternshipStatus status = temp.getInternships().get(0).getStatus();
 		assertEquals(status, InternshipStatus.ACCEPTED);
 	}
 

@@ -83,4 +83,10 @@ public interface Student {
 	 * @return The programme the student is enrolled in.
 	 */
 	Programme getProgramme();
+	
+	/**
+	 * Student has a counter for internships added
+	 * @return Integer identifying most recent internship accepted
+	 */
+	Integer getMaxInternshipId();
 }

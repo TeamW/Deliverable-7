@@ -44,7 +44,7 @@ public class ViewStudentDetail {
 				"awesome job", 123912.12);
 		student.setInternship(new InternshipImpl("john",
 				"john@someEmployer.com", e, r));
-		student.getInternship().accept();
+		student.getInternships().get(0).accept();
 	}
 
 	@After

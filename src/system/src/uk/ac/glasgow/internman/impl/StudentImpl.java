@@ -26,7 +26,7 @@ public class StudentImpl extends User implements Student, Serializable {
 	private HashMap<Integer, Internship> internships;
 	private Programme programme;
 	private boolean sufficientInternships = false;
-	private Integer maxInternshipId;
+	private Integer maxInternshipId = 0;
 
 	public StudentImpl(String forename, String surname, String email,
 			String matric, Programme programme) {
@@ -109,6 +109,11 @@ public class StudentImpl extends User implements Student, Serializable {
 	
 	public Boolean getSufficientInternships() {
 		return sufficientInternships;
+	}
+	
+	public Integer getMaxInternshipId()
+	{
+		return maxInternshipId;
 	}
 
 }
