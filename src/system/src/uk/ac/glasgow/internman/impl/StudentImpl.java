@@ -25,7 +25,6 @@ public class StudentImpl extends User implements Student, Serializable {
 	private String matric;
 	private HashMap<Integer, Internship> internships;
 	private Programme programme;
-	private boolean sufficientInternships = false;
 	private Integer maxInternshipId = 0;
 
 	public StudentImpl(String forename, String surname, String email,
@@ -56,13 +55,10 @@ public class StudentImpl extends User implements Student, Serializable {
 		}
 		maxInternshipId += 1;
 		internships.put(maxInternshipId, i);
-		
-		// check if student now has sufficient internships
-		calcSufficientInternships();
 	}
 	
 	// check if student now has sufficient internships
-	private void calcSufficientInternships(){
+	private Boolean calcEnoughInternships(){
 		Date start = internships.get(0).getRole().getStart();
 		Date end = internships.get(0).getRole().getEnd();
 		for( Entry<Integer, Internship> internship : internships.entrySet()){
@@ -77,9 +73,10 @@ public class StudentImpl extends User implements Student, Serializable {
 		int diffInDays = (int) ((end.getTime() - start.getTime())/ DAY_IN_MILLIS );
 		
 		// if the number of days in internships is greater than or equal to the desired 
-		// time of internships (at the moment 12 weeks) change the flag to true
+		// time of internships (at the moment 12 weeks) then return true
 		if(diffInDays >= 7*12)
-			sufficientInternships = true;
+			return true;
+		return false;
 	}
 
 	@Override
@@ -107,13 +104,14 @@ public class StudentImpl extends User implements Student, Serializable {
 		return programme;
 	}
 	
-	public Boolean getSufficientInternships() {
-		return sufficientInternships;
+	@Override
+	public Integer getMaxInternshipId(){
+		return maxInternshipId;
 	}
 	
-	public Integer getMaxInternshipId()
-	{
-		return maxInternshipId;
+	@Override
+	public Boolean getEnoughInternships(){
+		return calcEnoughInternships();
 	}
 
 }
