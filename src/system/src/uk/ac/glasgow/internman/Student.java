@@ -1,6 +1,5 @@
 package uk.ac.glasgow.internman;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 
 import uk.ac.glasgow.internman.Internship;
