@@ -21,7 +21,7 @@ void publishAdvertisement(int advertisementIndex, String comment);
 	
 	Employer registerNewEmployer(String name, String email);
 	
-	void approveOffer(String matriculation, int id);
+	void approveOffer(String matriculation, Integer id);
 	
 	void assignAcademicVisitor(String matriculation, String visitorName);
 	

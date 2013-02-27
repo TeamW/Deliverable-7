@@ -40,7 +40,7 @@ public class Admin implements AdminInterface {
 	}
 
 	@Override
-	public void approveOffer(String matriculation, int id) {
+	public void approveOffer(String matriculation, Integer id) {
 		Student stud = UD.getStudent(matriculation);
 		if (stud == null) {
 			return;

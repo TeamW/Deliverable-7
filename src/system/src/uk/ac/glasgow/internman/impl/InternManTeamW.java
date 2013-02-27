@@ -316,15 +316,18 @@ public class InternManTeamW implements InternMan {
 	}
 
 	/**
-	 * Allows the Course Coordinator to approve an offer.
+	 * Allows the Course Coordinator to approve an offer most
+	 * recently accepted by the student.
 	 * 
 	 * @param matriculation
 	 * 			Matriculation number of Student as a String.
 	 */
 	@Override
 	public void approveAcceptedOffer(String matriculation) {
-		if (currentUser instanceof CourseCoordinator)
-			admin.approveOffer(matriculation);
+		if (currentUser instanceof CourseCoordinator){
+			admin.approveOffer(matriculation, 
+					admin.selectStudent(matriculation).getMaxInternshipId());
+		}
 	}
 
 	/**
