@@ -85,8 +85,16 @@ public interface Student {
 	Programme getProgramme();
 	
 	/**
-	 * Student has a counter for internships added
-	 * @return Integer identifying most recent internship accepted
+	 * Student has a counter for internships added.
+	 * 
+	 * @return Integer identifying most recent internship accepted.
 	 */
 	Integer getMaxInternshipId();
+	
+	/**
+	 * Student must have enough internships to cover 12 weeks.
+	 * 
+	 * @return A boolean indicating if the student has enough internships.
+	 */
+	Boolean getEnoughInternships();
 }
