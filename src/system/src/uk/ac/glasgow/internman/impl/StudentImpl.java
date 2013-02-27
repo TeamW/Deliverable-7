@@ -2,7 +2,6 @@ package uk.ac.glasgow.internman.impl;
 
 import java.io.Serializable;
 import java.util.Date;
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map.Entry;
 

@@ -39,15 +39,15 @@ public class ViewStudentSummaryCommand extends SystemCommand<InternMan> {
 			Map<Integer,Internship> internships = student.getInternships();
 			
 			for (Entry<Integer,Internship> internship: internships.entrySet()){
-			if (internship != null)
-				result+=
-					internship.getValue().getManager()+"\t"+
-					internship.getValue().getManagerEmail()+"\t"+
-					(internship.getValue().isVisitComplete()?"Y":"N");
+				if (internship != null)
+					result+=
+						internship.getValue().getManager()+"\t"+
+						internship.getValue().getManagerEmail()+"\t"+
+						(internship.getValue().isVisitComplete()?"Y":"N");
 			
+					result += "\n";
+				}
 				result += "\n";
-			}
-			result += "\n";
 		}
 		dialogue.sendMessage(result);
 	}
