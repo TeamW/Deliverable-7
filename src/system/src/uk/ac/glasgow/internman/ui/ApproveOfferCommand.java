@@ -30,7 +30,7 @@ public class ApproveOfferCommand extends SystemCommand<InternMan>{
 		Student student = facade.selectStudent(matriculation);
 		
 		if (student != null){
-			Internship internship = student.getInternship();
+			Internship internship = student.getInternships().get(student.getMaxInternshipId());
 			
 			if (internship != null &&
 				internship.getStatus().equals(InternshipStatus.APPROVED))

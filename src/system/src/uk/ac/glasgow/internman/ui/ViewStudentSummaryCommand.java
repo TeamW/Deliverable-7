@@ -1,6 +1,7 @@
 package uk.ac.glasgow.internman.ui;
 
 import java.util.Map;
+import java.util.Map.Entry;
 
 import uk.ac.glasgow.clui.CommandDescription;
 import uk.ac.glasgow.clui.MinimumArguments;
@@ -35,16 +36,18 @@ public class ViewStudentSummaryCommand extends SystemCommand<InternMan> {
 				student.getMatriculation()+"\t"+
 				student.getEmail()+"\t";
 			
-			Internship internship = student.getInternship();
+			Map<Integer,Internship> internships = student.getInternships();
 			
+			for (Entry<Integer,Internship> internship: internships.entrySet()){
 			if (internship != null)
 				result+=
-					internship.getManager()+"\t"+
-					internship.getManagerEmail()+"\t"+
-					(internship.isVisitComplete()?"Y":"N");
+					internship.getValue().getManager()+"\t"+
+					internship.getValue().getManagerEmail()+"\t"+
+					(internship.getValue().isVisitComplete()?"Y":"N");
 			
+				result += "\n";
+			}
 			result += "\n";
-
 		}
 		dialogue.sendMessage(result);
 	}
