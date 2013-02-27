@@ -1,6 +1,7 @@
 package uk.ac.glasgow.internman.impl.admin;
 
 import java.util.Map;
+import java.util.Map.Entry;
 
 import uk.ac.glasgow.internman.*;
 import uk.ac.glasgow.internman.impl.*;
@@ -39,12 +40,12 @@ public class Admin implements AdminInterface {
 	}
 
 	@Override
-	public void approveOffer(String matriculation) {
+	public void approveOffer(String matriculation, int id) {
 		Student stud = UD.getStudent(matriculation);
 		if (stud == null) {
 			return;
 		}
-		Internship intern = stud.getInternship();
+		Internship intern = stud.getInternships().get(id);
 		intern.approve();
 	}
 
@@ -52,7 +53,9 @@ public class Admin implements AdminInterface {
 	public void assignAcademicVisitor(String matriculation, String visitorName) {
 		Student stud = UD.getStudent(matriculation);
 		Visit v = new VisitImpl(new VisitorImpl(visitorName), null, null);
-		stud.getInternship().setVisit(v);
+		for( Entry<Integer, Internship> internship : stud.getInternships().entrySet()){
+			internship.getValue().setVisit(v);
+		}
 	}
 
 	@Override
