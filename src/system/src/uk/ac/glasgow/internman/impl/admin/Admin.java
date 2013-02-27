@@ -71,9 +71,9 @@ public class Admin implements AdminInterface {
 
 	@Override
 	public void recordVisitAssessment(String matriculation, UoGGrade grade,
-			String description) {
+			String description, int id) {
 		Student stud = UD.getStudent(matriculation);
-		Visit v = stud.getInternship().getVisit();
+		Visit v = stud.getInternships().get(id).getVisit();
 		if (!(v == null)) {
 			v.setUoGGrade(grade);
 			v.setDescription(description);
